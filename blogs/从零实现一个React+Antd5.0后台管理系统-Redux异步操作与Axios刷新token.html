@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>从零实现一个React+Antd5.0后台管理系统-Redux异步操作与Axios刷新token | 龙二的博客</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="不要因为别人都在交卷自己就乱写答案">
+    
+    <link rel="preload" href="/vuepress-blog/assets/css/0.styles.a146971e.css" as="style"><link rel="preload" href="/vuepress-blog/assets/js/app.4d1def3f.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/3.7d50d3e1.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/1.6ae6daff.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/77.ee8dae13.js" as="script"><link rel="prefetch" href="/vuepress-blog/assets/js/10.a0094eb9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/11.8cc30e4d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/12.a3b3d038.js"><link rel="prefetch" href="/vuepress-blog/assets/js/13.a651855d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/14.7ed1ec91.js"><link rel="prefetch" href="/vuepress-blog/assets/js/15.023cd03c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/16.9ef7ac5e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/17.422ad17c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/18.a6e180bf.js"><link rel="prefetch" href="/vuepress-blog/assets/js/19.6ce1b2b0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/20.9aadbc90.js"><link rel="prefetch" href="/vuepress-blog/assets/js/21.17c3096b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/22.313dd9d1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/23.4b2555ca.js"><link rel="prefetch" href="/vuepress-blog/assets/js/24.942269f4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/25.d5f20286.js"><link rel="prefetch" href="/vuepress-blog/assets/js/26.9a829b24.js"><link rel="prefetch" href="/vuepress-blog/assets/js/27.d7f30161.js"><link rel="prefetch" href="/vuepress-blog/assets/js/28.24ce6804.js"><link rel="prefetch" href="/vuepress-blog/assets/js/29.e5f055c1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/30.1ba01103.js"><link rel="prefetch" href="/vuepress-blog/assets/js/31.3d990e36.js"><link rel="prefetch" href="/vuepress-blog/assets/js/32.bb714c7d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/33.91a0a990.js"><link rel="prefetch" href="/vuepress-blog/assets/js/34.6579c3f9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/35.27946a52.js"><link rel="prefetch" href="/vuepress-blog/assets/js/36.bf946ff3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/37.9efda974.js"><link rel="prefetch" href="/vuepress-blog/assets/js/38.2e89b085.js"><link rel="prefetch" href="/vuepress-blog/assets/js/39.a2c4046e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/4.76e26aa1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/40.e78e5bb4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/41.44229177.js"><link rel="prefetch" href="/vuepress-blog/assets/js/42.87ad822a.js"><link rel="prefetch" href="/vuepress-blog/assets/js/43.5a0a040e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/44.52849bbd.js"><link rel="prefetch" href="/vuepress-blog/assets/js/45.39a7578a.js"><link rel="prefetch" href="/vuepress-blog/assets/js/46.524bb8f0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/47.7ed73f35.js"><link rel="prefetch" href="/vuepress-blog/assets/js/48.8b86acf1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/49.5336fb9f.js"><link rel="prefetch" href="/vuepress-blog/assets/js/5.7576fc30.js"><link rel="prefetch" href="/vuepress-blog/assets/js/50.4e1f73ad.js"><link rel="prefetch" href="/vuepress-blog/assets/js/51.f2ffcee1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/52.f144a0bb.js"><link rel="prefetch" href="/vuepress-blog/assets/js/53.856ca109.js"><link rel="prefetch" href="/vuepress-blog/assets/js/54.8783a9b1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/55.230b5306.js"><link rel="prefetch" href="/vuepress-blog/assets/js/56.ac605fa3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/57.f1d2bcef.js"><link rel="prefetch" href="/vuepress-blog/assets/js/58.93d1b1c3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/59.273ec851.js"><link rel="prefetch" href="/vuepress-blog/assets/js/6.32f1aaf4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/60.d4707dc9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/61.bcea3999.js"><link rel="prefetch" href="/vuepress-blog/assets/js/62.64837723.js"><link rel="prefetch" href="/vuepress-blog/assets/js/63.2db0caf0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/64.0ca7fd83.js"><link rel="prefetch" href="/vuepress-blog/assets/js/65.028a9dfa.js"><link rel="prefetch" href="/vuepress-blog/assets/js/66.eaa80467.js"><link rel="prefetch" href="/vuepress-blog/assets/js/67.0ff1370e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/68.bc893b77.js"><link rel="prefetch" href="/vuepress-blog/assets/js/69.a22929ab.js"><link rel="prefetch" href="/vuepress-blog/assets/js/7.385ed0df.js"><link rel="prefetch" href="/vuepress-blog/assets/js/70.371b7054.js"><link rel="prefetch" href="/vuepress-blog/assets/js/71.a01ce528.js"><link rel="prefetch" href="/vuepress-blog/assets/js/72.1b0cd0f5.js"><link rel="prefetch" href="/vuepress-blog/assets/js/73.4514ed93.js"><link rel="prefetch" href="/vuepress-blog/assets/js/74.188aaa3b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/75.594b462c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/76.b8a12591.js"><link rel="prefetch" href="/vuepress-blog/assets/js/78.921e11a2.js"><link rel="prefetch" href="/vuepress-blog/assets/js/79.15260a1b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/8.f0575d67.js"><link rel="prefetch" href="/vuepress-blog/assets/js/80.b8683be3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/81.97f0bad0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/82.fca1fb9c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/83.465cd15c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/84.82978ff2.js"><link rel="prefetch" href="/vuepress-blog/assets/js/85.c19f75b5.js"><link rel="prefetch" href="/vuepress-blog/assets/js/86.9dcbfcae.js"><link rel="prefetch" href="/vuepress-blog/assets/js/87.a3f8e943.js"><link rel="prefetch" href="/vuepress-blog/assets/js/9.b0835361.js">
+    <link rel="stylesheet" href="/vuepress-blog/assets/css/0.styles.a146971e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>龙二的博客</h3> <p class="description" data-v-59e6cb88>不要因为别人都在交卷自己就乱写答案</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>龙二</span>
+          
+        <!---->
+        2024
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepress-blog/" class="home-link router-link-active"><img src="/vuepress-blog/龙二.jpg" alt="龙二的博客" class="logo"> <span class="site-name">龙二的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepress-blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/CSS学习笔记/" class="nav-link"><i class="undefined"></i>
+  CSS学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/《ES6入门教程》学习笔记/" class="nav-link"><i class="undefined"></i>
+  《ES6入门教程》学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/Vue学习笔记/" class="nav-link"><i class="undefined"></i>
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/vue3+ts+node.js后台管理系统/" class="nav-link"><i class="undefined"></i>
+  vue3+ts+node.js后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/从零实现一个React+Antd5.0后台管理系统/" class="nav-link"><i class="undefined"></i>
+  从零实现一个React+Antd5.0后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/javaScript学习笔记/" class="nav-link"><i class="undefined"></i>
+  javaScript学习笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      我的
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/4385276223300142" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/Alan-222" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/vuepress-blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    龙二
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>77</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>11</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/vuepress-blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/CSS学习笔记/" class="nav-link"><i class="undefined"></i>
+  CSS学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/《ES6入门教程》学习笔记/" class="nav-link"><i class="undefined"></i>
+  《ES6入门教程》学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/Vue学习笔记/" class="nav-link"><i class="undefined"></i>
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/vue3+ts+node.js后台管理系统/" class="nav-link"><i class="undefined"></i>
+  vue3+ts+node.js后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/从零实现一个React+Antd5.0后台管理系统/" class="nav-link"><i class="undefined"></i>
+  从零实现一个React+Antd5.0后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/javaScript学习笔记/" class="nav-link"><i class="undefined"></i>
+  javaScript学习笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      我的
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/4385276223300142" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/Alan-222" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/vuepress-blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>从零实现一个React+Antd5.0后台管理系统-Redux异步操作与Axios刷新token</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>龙二</span>
+          
+        <!---->
+        2024
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">从零实现一个React+Antd5.0后台管理系统-Redux异步操作与Axios刷新token</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>龙二</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2023/11/6</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>React</span><span class="tag-item" data-v-8a445198>Ant Design</span><span class="tag-item" data-v-8a445198>Redux</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p><code>Redux</code>基本状态管理与<code>Axios</code>接口请求封装完成后，我们就可以进行<code>Redux</code>异步操作然后根据其结果修改全局状态。在本系统的实际应用是通过登录接口缓存 token 信息到<code>Redux</code>的 state 中，当这个 token 过期的时候会返回 401，在<code>axios</code>实例的响应拦截器中拦截到后进行<code>刷新token</code>的操作以此实现页面无感刷新。还有就是登录进入系统以后异步请求用户信息进行存储。接下来我们来看看具体的实现过程。</p> <h2 id="redux-异步操作"><a href="#redux-异步操作" class="header-anchor">#</a> Redux 异步操作</h2> <p>通常在 Redux 中需要进行异步操作的话，我们需要 Redux-Thunk 中间件。</p> <blockquote><p>Redux Thunk 是一个中间件,允许在 Redux action 中返回函数而不仅仅是纯对象。这使得我们能够在 action 中进行异步操作，并在操作完成后分发一个新的 action。</p></blockquote> <p>但<code>Redux-Toolkit</code>工具包已经内置了 thunk 插件，不需要再单独安装<code>Redux-Thunk</code>中间件，可以直接处理异步的 action。接下来我们直接编写登录的异步方法。</p> <h3 id="登录的异步方法"><a href="#登录的异步方法" class="header-anchor">#</a> 登录的异步方法</h3> <h4 id="实现异步更新用户信息"><a href="#实现异步更新用户信息" class="header-anchor">#</a> 实现异步更新用户信息</h4> <p>1.导入从浏览器<code>localStorage</code>获取以及存储 token、refreshToken 的方法</p> <p><strong>src/store/reducers/userSlice.js</strong></p> <div class="language- extra-class"><pre><code>import { getRefreshToken, getToken, removeRefreshToken, removeToken, setRefreshToken, setToken } from '@/utils/auth'
+</code></pre></div><p>2.导入登录和获取用户信息的接口</p> <p><strong>登录成功返回</strong>：<code>token、refreshToken</code></p> <p><strong>获取用户信息成功返回</strong>：用户名、头像等等</p> <div class="language- extra-class"><pre><code>import userApi from '@/api/user'
+</code></pre></div><p>3.编写登录和登出的同步 action。<strong>作用为</strong>更新 state 中的<code>token</code>和<code>refreshToken</code></p> <div class="language- extra-class"><pre><code>...
+reducers: {
+    login(state, action) {
+      state.token = action.payload.token
+      state.refreshToken = action.payload.refreshToken
+      // 将数据持久化
+      setToken(state.token)
+      setRefreshToken(state.refreshToken)
+    },
+    logout(state, action) {
+      state.token = null
+      state.refreshToken = null
+      state.userinfo = null
+      // 移除存储中的信息
+      removeToken()
+      removeRefreshToken()
+    }
+}
+...
+</code></pre></div><p>4.编写获取用户信息的异步方法。作用为更新用户状态（数据）</p> <div class="language- extra-class"><pre><code>...
+// 导出经过redux包装的action对象
+export const { login, setUserinfo,logout } = userSlice.actions
+// 导出获取登录用户信息的异步方法
+export const getUserInfoAsync = () =&gt; async (dispatch) =&gt; {
+  const { data } = await userApi.center.get()
+  dispatch(setUserinfo({ ...data, avatar: data.avatar ? process.env.React_APP_IMG_API + '/' + data.avatar : null }))
+  return data
+}
+</code></pre></div><blockquote><p><code>process.env.React_APP_IMG_API</code>环境变量为本人设置的访问图片的前缀，加上<code>data.avatar</code>即为完整的头像图片地址。可以在<code>.env.development</code>和<code>.env.production</code>文件中配置，分别为开发和生产环境。本文示例开发环境地址为<a href="http://127.0.0.1:9999/" target="_blank" rel="noopener noreferrer">http://127.0.0.1:9999<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <p>5.编写登录的异步 action。<strong>作用为</strong>调用登录及获取登录的用户信息的接口，并分发同步的登录方法更新 token、refreshToken 状态</p> <div class="language- extra-class"><pre><code>...
+// 登录异步方法
+export const loginAsync = (payload) =&gt; async (dispatch) =&gt; {
+  const { data } = await userApi.login.login(payload)
+  dispatch(login(data))
+  await dispatch(getUserInfoAsync())
+}
+</code></pre></div><p>但我们还少了一个步骤，即获取登录用户的角色后，还要对角色的菜单和按钮权限进行处理，处理成<code>React router</code>能识别的格式才可以正常地访问系统。对于这部分有问题的可以访问<a href="https://juejin.cn/post/7283642910301880372" target="_blank" rel="noopener noreferrer">系统简介及设计<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。这里我们要新加一个<strong>Redux 切片</strong>来处理权限【菜单、按钮】的状态。</p> <h3 id="新增-redux-切片处理用户权限"><a href="#新增-redux-切片处理用户权限" class="header-anchor">#</a> 新增 Redux 切片处理用户权限</h3> <p>我们在 store 下的 reducers 文件夹新建<code>permissionSlice.js</code>文件，在这里我们来处理服务器返回的权限数组。我们先来看看服务器返回的数据结构</p> <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2d05b46d52f941759cc32ae43842f4dc~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=798&amp;h=678&amp;s=48258&amp;e=png&amp;b=ffffff" alt="img.png" referrerpolicy="no-referrer"> <p>大概就是形如如下的结构（title 代表页签显示的标题、comonent 为 src 下 pages 后拼接的组件地址,children 为下一级导航的路由）</p> <div class="language- extra-class"><pre><code>[
+  {menu_id:40,title:'系统管理',component:&quot;Layout&quot;,children:[{menu_id:xx,title:'xx'}]}
+  {xxxxx,children:[xxx]}
+]
+</code></pre></div><p>而正常<code>React-Router</code>的路由结构如下所示</p> <div class="language- extra-class"><pre><code>[
+  // 访问/时重定向到/home
+  {
+    path: '/',
+    element: &lt;Layout /&gt;,
+    children: [
+      { index: true, element: &lt;Navigate to=&quot;/home&quot; replace /&gt; },
+      { path: 'home', element: &lt;Home /&gt; },
+      {
+        path: 'system',
+        element: &lt;System /&gt;,
+        children: [
+          { index: true, element: &lt;Navigate to=&quot;/system/user&quot; replace /&gt; },
+          { path: 'user', element: &lt;User /&gt; },
+          { path: 'role', element: &lt;Role /&gt; },
+          { path: 'auth', element: &lt;Auth /&gt; }
+     ]
+   }
+ ]
+</code></pre></div><p>我们要创建一个切片将服务器返回的数据转为如上的路由结构。但是现在的路由还全是静态的，我们得先改造一下，在<code>React-Router</code>的配置文件里只暴露静态路由【无需权限就可访问的路由】，在切片中再进行静态和动态路由的拼接。</p> <h3 id="改造路由"><a href="#改造路由" class="header-anchor">#</a> 改造路由</h3> <p>在本系统中，静态的路由只包含登陆路由和首页。同时，我们还应该将未匹配的 url 全部跳转 404 页面。具体的路由结构如下所示：</p> <p><strong>src/router/index.js</strong></p> <div class="language- extra-class"><pre><code>import { lazy } from 'react'
+import { Navigate } from 'react-router-dom'
+// 用路由懒加载优化加载性能
+const Layout = lazy(() =&gt; import('/Layout'))
+const Home = lazy(() =&gt; import('@/pages/Home'))
+const Login = lazy(() =&gt; import('@/pages/Login'))
+const NotFound = lazy(() =&gt; import('@/pages/NotFound'))
+​
+const constantRoutes = [
+  { path: 'login', title: '登录', element: &lt;Login /&gt; },
+  {
+    path: '/',
+    title: '首页',
+    hidden: true,
+    element: &lt;Layout /&gt;,
+    children: [
+      { index: true, element: &lt;Navigate to={'/home'} replace /&gt; },
+      // hidden:false代表要显示在侧边导航栏，其余皆不显示
+      { path: 'home', title: '首页', element: &lt;Home /&gt;, hidden: false }
+    ]
+  },
+  { path: '*', title: '404页面', element: &lt;NotFound /&gt; }
+]
+export default constantRoutes
+</code></pre></div><h3 id="创建用户权限切片"><a href="#创建用户权限切片" class="header-anchor">#</a> 创建用户权限切片</h3> <h4 id="基本结构"><a href="#基本结构" class="header-anchor">#</a> 基本结构</h4> <p>首先我们先编写正常的切片代码，在 initialState 中要存储两个路由数组，一个是完整的路由数组（包括静态的路由和权限路由），一个只包含权限路由。再编写对应的 reducer 处理方法。</p> <p><strong>src/store/reducers/permissionSlice.js</strong></p> <div class="language- extra-class"><pre><code>import { createSlice } from '@reduxjs/toolkit'
+import  constantRoutes from '@/router'
+const permissionSlice = createSlice({
+  name: 'permission',
+  initialState: {
+    // routers默认为静态路由，之后拼接上服务器返回动态路由
+    routes: constantRoutes,
+    permissionRoutes: []
+  },
+  reducers: {
+    setRoutes(state, action) {
+      state.routes = constantRoutes.map((item) =&gt; {
+      // 嵌套在layout路由children下
+        if (item.path === '/') {
+          return { ...item, children: item.children.concat(action.payload.routes) }
+        }
+        return item
+      })
+    },
+    setPermissionRoutes(state, action) {
+      state.permissionRoutes = action.payload.routes
+    }，
+  }
+})
+export const { setRoutes, setPermissionRoutes } = permissionSlice.actions
+export default permissionSlice
+</code></pre></div><h4 id="转换路由结构"><a href="#转换路由结构" class="header-anchor">#</a> 转换路由结构</h4> <p>我们单独写一个递归函数（默认不知道有多少层级，所以要递归）来处理服务器返回的结构。主要的作用就是将后端返回的菜单数组转换为 Router Router 的路由结构。</p> <div class="language- extra-class"><pre><code>import { lazy } from 'react'
+// 得到后端路由经转换后的路由结构
+function filterAsyncRoutes(routes) {
+  const res = []
+  // 遍历得到的路由转换为前端router结构
+  routes.forEach((route) =&gt; {
+   // 页面路由懒加载
+    const Component = lazy(() =&gt; import(`@/pages${route.component}`))
+    const tmp = {
+      path: route.path,
+      // 若为Layout则直接用父路由的Layout结构，否则用src/pages目录去拼接
+      element: route.component === 'Layout' ? null : &lt;Component /&gt;,
+      redirect: route.redirect || undefined,
+      title: route.title,
+      // 将Number类型hidden转为Boolean
+      hidden: !!Number(route.hidden),
+      children: route.children || undefined
+    }
+    if (route.icon) {
+      tmp.icon = route.icon
+    }
+    if (tmp.children &amp;&amp; tmp.children.length) {
+      tmp.children = route.redirect
+        ? [{ index: true, element: &lt;Navigate to={route.redirect} replace /&gt; }].concat(filterAsyncRoutes(tmp.children))
+        : filterAsyncRoutes(tmp.children)
+      // tmp.children = filterAsyncRoutes(tmp.children)
+    }
+    res.push(tmp)
+  })
+  return res
+}
+</code></pre></div><h4 id="编写异步方法"><a href="#编写异步方法" class="header-anchor">#</a> 编写异步方法</h4> <div class="language- extra-class"><pre><code>export const generateRoutes = (payload) =&gt; (dispatch) =&gt; {
+  const accessedRoutes = filterAsyncRoutes(payload)
+  // 分发全局路由状态（静态 + 动态）
+  dispatch(setRoutes({ routes: accessedRoutes }))
+  // 分发动态路由
+  dispatch(setPermissionRoutes({ routes: accessedRoutes }))
+  return accessedRoutes
+}
+</code></pre></div><h4 id="添加进-store"><a href="#添加进-store" class="header-anchor">#</a> 添加进 store</h4> <p><strong>src/store/index.js</strong></p> <div class="language- extra-class"><pre><code>...
+import permissionSlice from './reducers/permissionSlice'
+// 创建store对象
+const store = configureStore({
+  reducer: {
+    user: userSlice.reducer,
+    permission: permissionSlice.reducer
+  }
+})
+...
+</code></pre></div><h3 id="修改-userslice-登录的异步方法"><a href="#修改-userslice-登录的异步方法" class="header-anchor">#</a> 修改 userSlice 登录的异步方法</h3> <p><strong>src/reducers/userSlice.js</strong></p> <div class="language- extra-class"><pre><code>// 导入加载用户路由的方法
+import { generateRoutes } from './permissionSlice'
+...
+// 登录异步方法
+export const loginAsync = (payload) =&gt; async (dispatch) =&gt; {
+  const { data } = await userApi.login.login(payload)
+  dispatch(login(data))
++  const userinfo = await dispatch(getUserInfoAsync())
++  dispatch(generateRoutes(userinfo.menus))
+}
+...
+</code></pre></div><h3 id="修改入口组件-app-jsx"><a href="#修改入口组件-app-jsx" class="header-anchor">#</a> 修改入口组件 App.jsx</h3> <p>我们完成两个切片<code>userSlice</code>和<code>permissionSlice</code>的编写后，就可以在页面中进行分发 action 进行全局状态的存储与使用。</p> <p>大致修改流程如下：</p> <p>1.判断浏览器<code>localStorage</code>是否存在 token</p> <ul><li><p>存在，则获取当前用户的信息，并加载当前用户的路由</p></li> <li><p>不存在，则跳到登录页面让其登录，登录后再执行上一步操作</p> <p>2.编写 Loading 组件，这里用到了 Antd 提供的 Spin 组件</p></li></ul> <blockquote><p>由于使用了 React 的路由动态加载 lazy，其需要在 React.Suspense 组件下进行渲染，Suspense 又支持传入 fallback 属性，作为动态加载模块完成前组件渲染的内容。</p></blockquote> <p><strong>src/components/Loading/index.jsx</strong></p> <div class="language- extra-class"><pre><code>import { Spin } from 'antd'
+import './Loading.scss'
+export default function Loading(props) {
+  let { loadingText = '数据加载中...' } = props
+​
+  return (
+    &lt;div className=&quot;Loading&quot;&gt;
+      &lt;Spin size=&quot;large&quot; /&gt;
+      &lt;h3 className=&quot;loadingText&quot;&gt;{loadingText}&lt;/h3&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre></div><p><strong>src/components/Loading/Loading.scss</strong></p> <div class="language- extra-class"><pre><code>.Loading{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.05);
+  .loadingText{
+    color: #408fff;
+  }
+}
+</code></pre></div><p>3.根组件 App 修改如下</p> <p><strong>src/App.jsx</strong></p> <div class="language- extra-class"><pre><code>import React, { Suspense, useEffect } from 'react'
+// 导入路由及react-redux钩子
+import { useNavigate, useRoutes } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+// 导入api
+import { getUserInfoAsync } from './store/reducers/userSlice'
+import { generateRoutes } from './store/reducers/permissionSlice'
+import { getToken } from './utils/auth'
+// 导入loading组件
+import Loading from '@/components/Loading'
+​
+export default function App() {
+  // redux hook
+  const dispatch = useDispatch()
+  const routes = useSelector((state) =&gt; state.permission.routes)
+  // 跳转方法
+  const navigate = useNavigate()
+​
+  useEffect(() =&gt; {
+    const fetchData = async () =&gt; {
+      if (getToken()) {
+        const userInfo = await dispatch(getUserInfoAsync())
+        dispatch(generateRoutes(userInfo.menus))
+      } else {
+        navigate('/login', { replace: true })
+      }
+    }
+    fetchData()
+  }, [dispatch])
+  // 利用hook转换路由表
+  const element = useRoutes(routes)
+  return (
+    &lt;&gt;
+      &lt;Suspense fallback={&lt;Loading /&gt;}&gt;{routes &amp;&amp; element}&lt;/Suspense&gt;
+    &lt;/&gt;
+  )
+}
+</code></pre></div><h2 id="测试"><a href="#测试" class="header-anchor">#</a> 测试</h2> <p>由于我们登录页面还没实现，我们先通过接口测试工具简单测试一下（这里以 postman 为例）</p> <h3 id="获取验证码"><a href="#获取验证码" class="header-anchor">#</a> 获取验证码</h3> <p>注意，这步需要安装好<code>Redis</code>！然后参考<a href="https://juejin.cn/post/7293289855076335656" target="_blank" rel="noopener noreferrer">从零实现一个 React+Antd5.0 后台管理系统-接口请求封装<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a><strong>所需准备</strong>中的接口文档输入请求 url 和请求参数</p> <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b877c7b689174a53b47f9b08c3a27b0d~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1165&amp;h=760&amp;s=70112&amp;e=png&amp;b=fff6f6" alt="img.png" referrerpolicy="no-referrer"> <h3 id="登录"><a href="#登录" class="header-anchor">#</a> 登录</h3> <h4 id="命令行获取验证码"><a href="#命令行获取验证码" class="header-anchor">#</a> 命令行获取验证码</h4> <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/96db78aa7c8f412792d90736fe049880~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=502&amp;h=304&amp;s=17592&amp;e=png&amp;b=0d0d0d" alt="img.png" referrerpolicy="no-referrer"> <h4 id="测试-2"><a href="#测试-2" class="header-anchor">#</a> 测试</h4> <p>用刚刚自定义的 uuid 和默认账号：Alan 密码：123456（需要添加账号可以用登录获取的 token 放在请求头中去添加）</p> <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d2d8404db972477aa551234086341248~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1185&amp;h=810&amp;s=93941&amp;e=png&amp;b=fefefe" alt="img.png" referrerpolicy="no-referrer"> <p>然后把获取到的 token 放到浏览器的 localStorage 中</p> <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c49d2594e50f4817a71992296f8b28bb~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1041&amp;h=298&amp;s=28152&amp;e=png&amp;b=fdfdfd" alt="img.png" referrerpolicy="no-referrer"> <p>刷新即可进入首页，点击系统管理重定向至用户管理的路由</p> <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7493ac15fa35463ca96ccc7884568739~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2559&amp;h=979&amp;s=182377&amp;e=png&amp;b=fef9f9" alt="img.png" referrerpolicy="no-referrer"> <p>但因为我们在转化后端路由的时候把 element 设为组件了，是个 Symbol 类型的数据，所以没有通过<code>redux</code> 的数据序列化检查，我们在 store 中添加中间件配置把它关掉即可。</p> <p><strong>src/store/index.js</strong></p> <div class="language- extra-class"><pre><code>...
+const store = configureStore({
+  reducer: {
+    user: userSlice.reducer,
+    permission: permissionSlice.reducer
+  },
++  middleware: (getDefaultMiddleware) =&gt;
++    getDefaultMiddleware({
++      //关闭redux序列化检测
++      serializableCheck: false
+    })
+})
+...
+</code></pre></div><p>到这里我们的测试就算成功了，完成了 Redux 异步操作用户信息。但是还有一点，我们存储在<strong>localStorage</strong>中的 token 传到后端检测后会存在<strong>过期返回状态码 401</strong>的现象，所以我们在<code>axios</code>拦截器拦截到这个状态码的时候要刷新一下 token，并重新载入因过期未执行的接口。</p> <h2 id="axios-响应拦截器中刷新-token"><a href="#axios-响应拦截器中刷新-token" class="header-anchor">#</a> Axios 响应拦截器中刷新 token</h2> <p>现在响应拦截器中无非就两种情况，当状态码为 0 的时候表示响应成功正常返回数据，当不为 0 的时候判断是否为<strong>401</strong>，如果是的话就刷新 token 并执行未响应队列。</p> <p><strong>src/utils/request.js</strong></p> <div class="language- extra-class"><pre><code>import store from '../store'
+import { setToken, setRefreshToken } from '../utils/auth'
+import { login } from '../store/reducers/userSlice'
+import { logout } from '@/store/reducers/userSlice'
+​
+...
+​
+// 是否正在刷新的标记
+let isRefreshing = false
+// 重试队列，每一项将是一个待执行的函数形式
+let requests = []
+// 添加响应拦截器
+instance.interceptors.response.use(
+  (response) =&gt; {
+    // 如果返回的类型为二进制文件类型
+    if (response.config.responseType === 'blob') {
+      if (response.status !== 200) {
+        message.error('请求失败' + response.status)
+        return Promise.reject()
+      } else if (!response.headers['content-disposition']) {
+        message.error('暂无接口访问权限')
+        return Promise.reject()
+      }
+      return response
+    } else {
+      // 如果接口请求失败
+      if (response.data.code !== 0) {
+        let errMsg = response.data.message || '系统错误'
+        // token过期
+        if (response.data.code === 401) {
+          const config = response.config
+          // token失效,判断请求状态
+          if (!isRefreshing) {
+            isRefreshing = true
+            // 刷新token
+            return Axios({
+              url: 'http://127.0.0.1:9999/user/refreshToken',
+              method: 'POST',
+              data: { refreshToken: store.getState().user.refreshToken }
+            })
+              .then((res) =&gt; {
+                // 刷新token成功，更新最新token
+                const { token, refreshToken } = res.data.data
+                store.dispatch(login({ token, refreshToken }))
+                setToken(token)
+                setRefreshToken(refreshToken)
+                //已经刷新了token，将所有队列中的请求进行重试
+                requests.forEach((cb) =&gt; {
+                  cb(token)
+                })
+                // 重试完了别忘了清空这个队列
+                requests = []
+                return instance({
+                  ...config,
+                  headers: {
+                    ...config.headers,
+                    Authorization: token
+                  }
+                })
+              })
+              .catch((e) =&gt; {
+                store.dispatch(logout())
+                // 重置token失败，跳转登录页
+                console.log(e.message)
+                window.location.href = '/login'
+              })
+              .finally(() =&gt; {
+                isRefreshing = false
+              })
+          } else {
+            // 返回未执行 resolve 的 Promise
+            return new Promise((resolve) =&gt; {
+              // 用函数形式将 resolve 存入，等待刷新后再执行
+              requests.push((token) =&gt; {
+                config.baseURL = '/api'
+                config.headers &amp;&amp; (config.headers['Authorization'] = token)
+                resolve(
+                  instance({
+                    ...config,
+                    headers: {
+                      ...config.headers,
+                      Authorization: token
+                    }
+                  })
+                )
+              })
+            })
+          }
+        } else {
+          message.error(errMsg)
+        }
+        return Promise.reject(errMsg)
+      }
+      return response.data
+    }
+  },
+  (error) =&gt; {
+    return Promise.reject(error)
+  }
+)
+</code></pre></div><p>然后，不出意外的话就会报错，原因是我们循环引用了（在切片中我们异步代码用的是<code>axios</code>封装的接口，然后我们又在<code>axios</code>封装文件中将 store 引入造成了循环引用）</p> <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/101a3216e0734c0cb749b1a0dff6235e~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1486&amp;h=963&amp;s=154522&amp;e=png&amp;b=2b171a" alt="img.png" referrerpolicy="no-referrer"> <p>要解决也很简单，我在入口文件里面引用不就好了，在 axios 我就抛出一个方法执行响应拦截器的方法。</p> <p><strong>src/utils/request.js</strong></p> <div class="language- extra-class"><pre><code>import store from '../store'
+import { setToken, setRefreshToken } from '../utils/auth'
+import { login } from '../store/reducers/userSlice'
+import { logout } from '@/store/reducers/userSlice'
+export function setResponseInterceptor(store, login, logout) {
+  // 填写上面的响应拦截器代码
+  ...
+}
+</code></pre></div><p><strong>src/index.js</strong></p> <div class="language- extra-class"><pre><code>...
+import store from './store'
+import { login, logout } from './store/reducers/userSlice'
+// 导入axios的响应拦截器方法
+import { setResponseInterceptor } from './utils/request'
+// 设置axios的响应拦截器
+setResponseInterceptor(store, login, logout)
+...
+</code></pre></div><p>这样就设置成功，也能够进行 token 的刷新操作。</p> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>本篇文章我们完成了<strong>Redux 异步操作</strong>和<strong>Axios 响应拦截器刷新 token</strong>。主要涉及到的知识有</p> <p>1.在切片文件中导出异步函数，并在组件中导入后进行 dispatch 分发</p> <p>2.如何进行路由动态加载（懒加载），并用<code>React.Suspense</code>包裹</p> <p>3.如何在 axios 响应拦截器中刷新 token</p> <p>4.用户路由如何动态生成路由表，并用 useRoutes hook 转换</p> <h2 id="代码"><a href="#代码" class="header-anchor">#</a> 代码</h2> <p>上述实现的代码都放在<a href="https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FAlan-222%2Freact-antd5-admin" title="https://github.com/Alan-222/react-antd5-admin" target="_blank" rel="noopener noreferrer">react-antd5-admin<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，大家可自行查阅</p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/vuepress-blog/blogs/从零实现一个React+Antd5.0后台管理系统-接口请求封装.html" class="prev">
+          从零实现一个React+Antd5.0后台管理系统-接口请求封装
+        </a></span> <span class="next"><a href="/vuepress-blog/blogs/从零实现一个React+Antd5.0后台管理系统-登录模块.html">
+          从零实现一个React+Antd5.0后台管理系统-登录模块
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#前言" class="sidebar-link reco-side-前言" data-v-b57cc07c>前言</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#redux-异步操作" class="sidebar-link reco-side-redux-异步操作" data-v-b57cc07c>Redux 异步操作</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#登录的异步方法" class="sidebar-link reco-side-登录的异步方法" data-v-b57cc07c>登录的异步方法</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#实现异步更新用户信息" class="sidebar-link reco-side-实现异步更新用户信息" data-v-b57cc07c>实现异步更新用户信息</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#新增-redux-切片处理用户权限" class="sidebar-link reco-side-新增-redux-切片处理用户权限" data-v-b57cc07c>新增 Redux 切片处理用户权限</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#改造路由" class="sidebar-link reco-side-改造路由" data-v-b57cc07c>改造路由</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#创建用户权限切片" class="sidebar-link reco-side-创建用户权限切片" data-v-b57cc07c>创建用户权限切片</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#基本结构" class="sidebar-link reco-side-基本结构" data-v-b57cc07c>基本结构</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#转换路由结构" class="sidebar-link reco-side-转换路由结构" data-v-b57cc07c>转换路由结构</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#编写异步方法" class="sidebar-link reco-side-编写异步方法" data-v-b57cc07c>编写异步方法</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#添加进-store" class="sidebar-link reco-side-添加进-store" data-v-b57cc07c>添加进 store</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#修改-userslice-登录的异步方法" class="sidebar-link reco-side-修改-userslice-登录的异步方法" data-v-b57cc07c>修改 userSlice 登录的异步方法</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#修改入口组件-app-jsx" class="sidebar-link reco-side-修改入口组件-app-jsx" data-v-b57cc07c>修改入口组件 App.jsx</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#测试" class="sidebar-link reco-side-测试" data-v-b57cc07c>测试</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#获取验证码" class="sidebar-link reco-side-获取验证码" data-v-b57cc07c>获取验证码</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#登录" class="sidebar-link reco-side-登录" data-v-b57cc07c>登录</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#命令行获取验证码" class="sidebar-link reco-side-命令行获取验证码" data-v-b57cc07c>命令行获取验证码</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#测试-2" class="sidebar-link reco-side-测试-2" data-v-b57cc07c>测试</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#axios-响应拦截器中刷新-token" class="sidebar-link reco-side-axios-响应拦截器中刷新-token" data-v-b57cc07c>Axios 响应拦截器中刷新 token</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#总结" class="sidebar-link reco-side-总结" data-v-b57cc07c>总结</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E4%B8%8EAxios%E5%88%B7%E6%96%B0token.html#代码" class="sidebar-link reco-side-代码" data-v-b57cc07c>代码</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/vuepress-blog/assets/js/app.4d1def3f.js" defer></script><script src="/vuepress-blog/assets/js/3.7d50d3e1.js" defer></script><script src="/vuepress-blog/assets/js/1.6ae6daff.js" defer></script><script src="/vuepress-blog/assets/js/77.ee8dae13.js" defer></script>
+  </body>
+</html>

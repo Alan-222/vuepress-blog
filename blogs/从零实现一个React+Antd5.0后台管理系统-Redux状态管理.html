@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>从零实现一个React+Antd5.0后台管理系统-Redux状态管理 | 龙二的博客</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="不要因为别人都在交卷自己就乱写答案">
+    
+    <link rel="preload" href="/vuepress-blog/assets/css/0.styles.a146971e.css" as="style"><link rel="preload" href="/vuepress-blog/assets/js/app.4d1def3f.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/3.7d50d3e1.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/1.6ae6daff.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/78.921e11a2.js" as="script"><link rel="prefetch" href="/vuepress-blog/assets/js/10.a0094eb9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/11.8cc30e4d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/12.a3b3d038.js"><link rel="prefetch" href="/vuepress-blog/assets/js/13.a651855d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/14.7ed1ec91.js"><link rel="prefetch" href="/vuepress-blog/assets/js/15.023cd03c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/16.9ef7ac5e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/17.422ad17c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/18.a6e180bf.js"><link rel="prefetch" href="/vuepress-blog/assets/js/19.6ce1b2b0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/20.9aadbc90.js"><link rel="prefetch" href="/vuepress-blog/assets/js/21.17c3096b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/22.313dd9d1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/23.4b2555ca.js"><link rel="prefetch" href="/vuepress-blog/assets/js/24.942269f4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/25.d5f20286.js"><link rel="prefetch" href="/vuepress-blog/assets/js/26.9a829b24.js"><link rel="prefetch" href="/vuepress-blog/assets/js/27.d7f30161.js"><link rel="prefetch" href="/vuepress-blog/assets/js/28.24ce6804.js"><link rel="prefetch" href="/vuepress-blog/assets/js/29.e5f055c1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/30.1ba01103.js"><link rel="prefetch" href="/vuepress-blog/assets/js/31.3d990e36.js"><link rel="prefetch" href="/vuepress-blog/assets/js/32.bb714c7d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/33.91a0a990.js"><link rel="prefetch" href="/vuepress-blog/assets/js/34.6579c3f9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/35.27946a52.js"><link rel="prefetch" href="/vuepress-blog/assets/js/36.bf946ff3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/37.9efda974.js"><link rel="prefetch" href="/vuepress-blog/assets/js/38.2e89b085.js"><link rel="prefetch" href="/vuepress-blog/assets/js/39.a2c4046e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/4.76e26aa1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/40.e78e5bb4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/41.44229177.js"><link rel="prefetch" href="/vuepress-blog/assets/js/42.87ad822a.js"><link rel="prefetch" href="/vuepress-blog/assets/js/43.5a0a040e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/44.52849bbd.js"><link rel="prefetch" href="/vuepress-blog/assets/js/45.39a7578a.js"><link rel="prefetch" href="/vuepress-blog/assets/js/46.524bb8f0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/47.7ed73f35.js"><link rel="prefetch" href="/vuepress-blog/assets/js/48.8b86acf1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/49.5336fb9f.js"><link rel="prefetch" href="/vuepress-blog/assets/js/5.7576fc30.js"><link rel="prefetch" href="/vuepress-blog/assets/js/50.4e1f73ad.js"><link rel="prefetch" href="/vuepress-blog/assets/js/51.f2ffcee1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/52.f144a0bb.js"><link rel="prefetch" href="/vuepress-blog/assets/js/53.856ca109.js"><link rel="prefetch" href="/vuepress-blog/assets/js/54.8783a9b1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/55.230b5306.js"><link rel="prefetch" href="/vuepress-blog/assets/js/56.ac605fa3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/57.f1d2bcef.js"><link rel="prefetch" href="/vuepress-blog/assets/js/58.93d1b1c3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/59.273ec851.js"><link rel="prefetch" href="/vuepress-blog/assets/js/6.32f1aaf4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/60.d4707dc9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/61.bcea3999.js"><link rel="prefetch" href="/vuepress-blog/assets/js/62.64837723.js"><link rel="prefetch" href="/vuepress-blog/assets/js/63.2db0caf0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/64.0ca7fd83.js"><link rel="prefetch" href="/vuepress-blog/assets/js/65.028a9dfa.js"><link rel="prefetch" href="/vuepress-blog/assets/js/66.eaa80467.js"><link rel="prefetch" href="/vuepress-blog/assets/js/67.0ff1370e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/68.bc893b77.js"><link rel="prefetch" href="/vuepress-blog/assets/js/69.a22929ab.js"><link rel="prefetch" href="/vuepress-blog/assets/js/7.385ed0df.js"><link rel="prefetch" href="/vuepress-blog/assets/js/70.371b7054.js"><link rel="prefetch" href="/vuepress-blog/assets/js/71.a01ce528.js"><link rel="prefetch" href="/vuepress-blog/assets/js/72.1b0cd0f5.js"><link rel="prefetch" href="/vuepress-blog/assets/js/73.4514ed93.js"><link rel="prefetch" href="/vuepress-blog/assets/js/74.188aaa3b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/75.594b462c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/76.b8a12591.js"><link rel="prefetch" href="/vuepress-blog/assets/js/77.ee8dae13.js"><link rel="prefetch" href="/vuepress-blog/assets/js/79.15260a1b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/8.f0575d67.js"><link rel="prefetch" href="/vuepress-blog/assets/js/80.b8683be3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/81.97f0bad0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/82.fca1fb9c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/83.465cd15c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/84.82978ff2.js"><link rel="prefetch" href="/vuepress-blog/assets/js/85.c19f75b5.js"><link rel="prefetch" href="/vuepress-blog/assets/js/86.9dcbfcae.js"><link rel="prefetch" href="/vuepress-blog/assets/js/87.a3f8e943.js"><link rel="prefetch" href="/vuepress-blog/assets/js/9.b0835361.js">
+    <link rel="stylesheet" href="/vuepress-blog/assets/css/0.styles.a146971e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>龙二的博客</h3> <p class="description" data-v-59e6cb88>不要因为别人都在交卷自己就乱写答案</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>龙二</span>
+          
+        <!---->
+        2024
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepress-blog/" class="home-link router-link-active"><img src="/vuepress-blog/龙二.jpg" alt="龙二的博客" class="logo"> <span class="site-name">龙二的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepress-blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/CSS学习笔记/" class="nav-link"><i class="undefined"></i>
+  CSS学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/《ES6入门教程》学习笔记/" class="nav-link"><i class="undefined"></i>
+  《ES6入门教程》学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/Vue学习笔记/" class="nav-link"><i class="undefined"></i>
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/vue3+ts+node.js后台管理系统/" class="nav-link"><i class="undefined"></i>
+  vue3+ts+node.js后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/从零实现一个React+Antd5.0后台管理系统/" class="nav-link"><i class="undefined"></i>
+  从零实现一个React+Antd5.0后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/javaScript学习笔记/" class="nav-link"><i class="undefined"></i>
+  javaScript学习笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      我的
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/4385276223300142" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/Alan-222" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/vuepress-blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    龙二
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>77</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>11</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/vuepress-blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/CSS学习笔记/" class="nav-link"><i class="undefined"></i>
+  CSS学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/《ES6入门教程》学习笔记/" class="nav-link"><i class="undefined"></i>
+  《ES6入门教程》学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/Vue学习笔记/" class="nav-link"><i class="undefined"></i>
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/vue3+ts+node.js后台管理系统/" class="nav-link"><i class="undefined"></i>
+  vue3+ts+node.js后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/从零实现一个React+Antd5.0后台管理系统/" class="nav-link"><i class="undefined"></i>
+  从零实现一个React+Antd5.0后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/javaScript学习笔记/" class="nav-link"><i class="undefined"></i>
+  javaScript学习笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      我的
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/4385276223300142" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/Alan-222" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/vuepress-blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>从零实现一个React+Antd5.0后台管理系统-Redux状态管理</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>龙二</span>
+          
+        <!---->
+        2024
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">从零实现一个React+Antd5.0后台管理系统-Redux状态管理</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>龙二</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2023/10/16</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>React</span><span class="tag-item" data-v-8a445198>Ant Design</span><span class="tag-item" data-v-8a445198>Redux</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>完成路由的基础配置后，我们需要存储一些需要全局使用的状态（例如 token、用户 id 等），所用到的状态管理库是<code>redux</code>。</p> <h2 id="redux-状态管理"><a href="#redux-状态管理" class="header-anchor">#</a> Redux 状态管理</h2> <blockquote><p>redux 是通过 state 来存储状态，通过<code>action</code>事件来管理和更新状态。它以集中式<code>Store</code>的方式对整个应用中使用的状态进行集中管理，确保状态只能以可预测的方式更新</p></blockquote> <h3 id="安装"><a href="#安装" class="header-anchor">#</a> 安装</h3> <p>1.redux 官方开发工具集</p> <div class="language- extra-class"><pre class="language-text"><code>npm install @reduxjs/toolkit
+</code></pre></div><p>2.redux 官方的 react 绑定库</p> <div class="language- extra-class"><pre class="language-text"><code>npm install react-redux
+</code></pre></div><h3 id="创建切片"><a href="#创建切片" class="header-anchor">#</a> 创建切片</h3> <p>首先我们先在 src 下创建文件夹<code>store</code>，我们所有的状态管理的处理都存储在这里。在其下创建一个<code>reducers</code>文件夹，用来保存模块化处理的状态切片。我们要存储用户信息、token 的状态，我们可以在 reducers 下创建一个<code>userSlice.js</code>文件表明其为用户的状态切片。</p> <p><strong>src/store/reducers/userSlice.js</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import { createSlice } from '@reduxjs/toolkit'
+import { getToken} from '@/utils/auth'
+/**
+ * 创建一个用户状态切片
+ */
+const userSlice = createSlice({
+  // 用来作为区分action的名称
+  name: 'user',
+  // 状态初始值
+  initialState: () =&gt; {
+    // 如果localStorage中有从其中取，否则为null
+    const token = getToken() || null
+    return {
+      token,
+      userinfo: { username: 'Alan' }
+    }
+  },
+  // 状态操作方法
+  reducers: {
+    setUserinfo(state, action) {
+      const { payload } = action
+      state.userinfo = payload
+    }
+  }
+})
+// 导出经过redux包装的action对象
+export const { setUserinfo } = userSlice.actions
+// 导出切片对象
+export default userSlice
+</code></pre></div><h3 id="创建-store-对象"><a href="#创建-store-对象" class="header-anchor">#</a> 创建 store 对象</h3> <p>我们有了切片后得要封装在一个 store 对象中然后统一暴露出去，这样在其它地方就可以通过 store.xxx 来访问此切片中的状态。</p> <p><strong>src/store/index.js</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import { configureStore } from '@reduxjs/toolkit'
+import userSlice from './reducers/userSlice'
+// 创建store对象
+const store = configureStore({
+  reducer: {
+    user: userSlice.reducer
+  }
+})
+​
+export default store
+</code></pre></div><h2 id="在-react-组件中使用-redux"><a href="#在-react-组件中使用-redux" class="header-anchor">#</a> 在 React 组件中使用 Redux</h2> <p><code>react-redux</code>库主要作用就是连接<code>Redux Store</code>和 React 组件。</p> <h3 id="为-react-提供-redux-store"><a href="#为-react-提供-redux-store" class="header-anchor">#</a> 为 React 提供 Redux Store</h3> <p>创建 store 后，我们可以通过在 <code>src/index.js</code> 中的应用程序外层放置一个 React Redux <code>&lt;Provider&gt;</code> 来使其对我们的 React 组件可用。导入我们刚刚创建的 Redux store，在 <code>&lt;App&gt;</code> 的外层放置一个 <code>&lt;Provider&gt;</code>，并将 store 作为 prop 传递：</p> <p><strong>src/index.js</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import App from './App'
+import './index.scss'
+// 导入redux相关库及文件
++ import store from './store'
++ import { Provider } from 'react-redux'
+​
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
++ &lt;Provider store={store}&gt;
+    &lt;BrowserRouter&gt;
+      &lt;App /&gt;
+    &lt;/BrowserRouter&gt;
++ &lt;/Provider&gt;
+)
+</code></pre></div><h3 id="在-react-组件中使用-redux-state-和-actions"><a href="#在-react-组件中使用-redux-state-和-actions" class="header-anchor">#</a> 在 React 组件中使用 Redux State 和 Actions</h3> <p>react-redux 为我们提供了两个钩子函数<code>useSelector</code>和<code>useDispatch</code>使得我们可以很方便地得到 state 和操作 state。</p> <p><strong>src/pages/Home</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUserinfo } from '@/store/reducers/userSlice'
+​
+const Home = () =&gt; {
++  // 通过react-redux的useSelector钩子得到username
++  const username = useSelector((state) =&gt; state.user.userinfo.username)
++  // 分发action的钩子
++  const dispatch = useDispatch()
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Home&lt;/h2&gt;
++      &lt;h2&gt;Username:{username}&lt;/h2&gt;
++      &lt;button onClick={() =&gt; dispatch(setUserinfo({ username:
++      'Tom' }))}&gt;设置用户名为Tom&lt;/button&gt;
+    &lt;/div&gt;
+  )
+}
+export default Home
+</code></pre></div><p>最终得到的 Home 页面如下图，点击“设置用户名为 Tom”按钮上方 Username 即变为 Tom。说明我们在 React 组件中使用 Redux State 和 Actions 成功。</p> <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8c2b79e18af244a69390075967cdf7b2~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=433&amp;h=340&amp;s=17035&amp;e=png&amp;b=fefefe" alt="img.png" referrerpolicy="no-referrer"> <h2 id="代码"><a href="#代码" class="header-anchor">#</a> 代码</h2> <p>上述实现的代码都放在<a href="https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FAlan-222%2Freact-antd5-admin" title="https://github.com/Alan-222/react-antd5-admin" target="_blank" rel="noopener noreferrer">react-antd5-admin<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，大家可自行查阅</p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/vuepress-blog/blogs/从零实现一个React+Antd5.0后台管理系统-路由配置.html" class="prev">
+          从零实现一个React+Antd5.0后台管理系统-路由配置
+        </a></span> <span class="next"><a href="/vuepress-blog/blogs/从零实现一个React+Antd5.0后台管理系统-接口请求封装.html">
+          从零实现一个React+Antd5.0后台管理系统-接口请求封装
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86.html#前言" class="sidebar-link reco-side-前言" data-v-b57cc07c>前言</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86.html#redux-状态管理" class="sidebar-link reco-side-redux-状态管理" data-v-b57cc07c>Redux 状态管理</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86.html#安装" class="sidebar-link reco-side-安装" data-v-b57cc07c>安装</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86.html#创建切片" class="sidebar-link reco-side-创建切片" data-v-b57cc07c>创建切片</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86.html#创建-store-对象" class="sidebar-link reco-side-创建-store-对象" data-v-b57cc07c>创建 store 对象</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86.html#在-react-组件中使用-redux" class="sidebar-link reco-side-在-react-组件中使用-redux" data-v-b57cc07c>在 React 组件中使用 Redux</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86.html#为-react-提供-redux-store" class="sidebar-link reco-side-为-react-提供-redux-store" data-v-b57cc07c>为 React 提供 Redux Store</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86.html#在-react-组件中使用-redux-state-和-actions" class="sidebar-link reco-side-在-react-组件中使用-redux-state-和-actions" data-v-b57cc07c>在 React 组件中使用 Redux State 和 Actions</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Redux%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86.html#代码" class="sidebar-link reco-side-代码" data-v-b57cc07c>代码</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/vuepress-blog/assets/js/app.4d1def3f.js" defer></script><script src="/vuepress-blog/assets/js/3.7d50d3e1.js" defer></script><script src="/vuepress-blog/assets/js/1.6ae6daff.js" defer></script><script src="/vuepress-blog/assets/js/78.921e11a2.js" defer></script>
+  </body>
+</html>

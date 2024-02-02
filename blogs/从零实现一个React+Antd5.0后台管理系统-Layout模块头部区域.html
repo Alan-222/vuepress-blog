@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>从零实现一个React+Antd5.0后台管理系统-Layout模块头部区域 | 龙二的博客</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="不要因为别人都在交卷自己就乱写答案">
+    
+    <link rel="preload" href="/vuepress-blog/assets/css/0.styles.a146971e.css" as="style"><link rel="preload" href="/vuepress-blog/assets/js/app.4d1def3f.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/3.7d50d3e1.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/1.6ae6daff.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/76.b8a12591.js" as="script"><link rel="prefetch" href="/vuepress-blog/assets/js/10.a0094eb9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/11.8cc30e4d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/12.a3b3d038.js"><link rel="prefetch" href="/vuepress-blog/assets/js/13.a651855d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/14.7ed1ec91.js"><link rel="prefetch" href="/vuepress-blog/assets/js/15.023cd03c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/16.9ef7ac5e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/17.422ad17c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/18.a6e180bf.js"><link rel="prefetch" href="/vuepress-blog/assets/js/19.6ce1b2b0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/20.9aadbc90.js"><link rel="prefetch" href="/vuepress-blog/assets/js/21.17c3096b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/22.313dd9d1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/23.4b2555ca.js"><link rel="prefetch" href="/vuepress-blog/assets/js/24.942269f4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/25.d5f20286.js"><link rel="prefetch" href="/vuepress-blog/assets/js/26.9a829b24.js"><link rel="prefetch" href="/vuepress-blog/assets/js/27.d7f30161.js"><link rel="prefetch" href="/vuepress-blog/assets/js/28.24ce6804.js"><link rel="prefetch" href="/vuepress-blog/assets/js/29.e5f055c1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/30.1ba01103.js"><link rel="prefetch" href="/vuepress-blog/assets/js/31.3d990e36.js"><link rel="prefetch" href="/vuepress-blog/assets/js/32.bb714c7d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/33.91a0a990.js"><link rel="prefetch" href="/vuepress-blog/assets/js/34.6579c3f9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/35.27946a52.js"><link rel="prefetch" href="/vuepress-blog/assets/js/36.bf946ff3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/37.9efda974.js"><link rel="prefetch" href="/vuepress-blog/assets/js/38.2e89b085.js"><link rel="prefetch" href="/vuepress-blog/assets/js/39.a2c4046e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/4.76e26aa1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/40.e78e5bb4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/41.44229177.js"><link rel="prefetch" href="/vuepress-blog/assets/js/42.87ad822a.js"><link rel="prefetch" href="/vuepress-blog/assets/js/43.5a0a040e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/44.52849bbd.js"><link rel="prefetch" href="/vuepress-blog/assets/js/45.39a7578a.js"><link rel="prefetch" href="/vuepress-blog/assets/js/46.524bb8f0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/47.7ed73f35.js"><link rel="prefetch" href="/vuepress-blog/assets/js/48.8b86acf1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/49.5336fb9f.js"><link rel="prefetch" href="/vuepress-blog/assets/js/5.7576fc30.js"><link rel="prefetch" href="/vuepress-blog/assets/js/50.4e1f73ad.js"><link rel="prefetch" href="/vuepress-blog/assets/js/51.f2ffcee1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/52.f144a0bb.js"><link rel="prefetch" href="/vuepress-blog/assets/js/53.856ca109.js"><link rel="prefetch" href="/vuepress-blog/assets/js/54.8783a9b1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/55.230b5306.js"><link rel="prefetch" href="/vuepress-blog/assets/js/56.ac605fa3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/57.f1d2bcef.js"><link rel="prefetch" href="/vuepress-blog/assets/js/58.93d1b1c3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/59.273ec851.js"><link rel="prefetch" href="/vuepress-blog/assets/js/6.32f1aaf4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/60.d4707dc9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/61.bcea3999.js"><link rel="prefetch" href="/vuepress-blog/assets/js/62.64837723.js"><link rel="prefetch" href="/vuepress-blog/assets/js/63.2db0caf0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/64.0ca7fd83.js"><link rel="prefetch" href="/vuepress-blog/assets/js/65.028a9dfa.js"><link rel="prefetch" href="/vuepress-blog/assets/js/66.eaa80467.js"><link rel="prefetch" href="/vuepress-blog/assets/js/67.0ff1370e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/68.bc893b77.js"><link rel="prefetch" href="/vuepress-blog/assets/js/69.a22929ab.js"><link rel="prefetch" href="/vuepress-blog/assets/js/7.385ed0df.js"><link rel="prefetch" href="/vuepress-blog/assets/js/70.371b7054.js"><link rel="prefetch" href="/vuepress-blog/assets/js/71.a01ce528.js"><link rel="prefetch" href="/vuepress-blog/assets/js/72.1b0cd0f5.js"><link rel="prefetch" href="/vuepress-blog/assets/js/73.4514ed93.js"><link rel="prefetch" href="/vuepress-blog/assets/js/74.188aaa3b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/75.594b462c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/77.ee8dae13.js"><link rel="prefetch" href="/vuepress-blog/assets/js/78.921e11a2.js"><link rel="prefetch" href="/vuepress-blog/assets/js/79.15260a1b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/8.f0575d67.js"><link rel="prefetch" href="/vuepress-blog/assets/js/80.b8683be3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/81.97f0bad0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/82.fca1fb9c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/83.465cd15c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/84.82978ff2.js"><link rel="prefetch" href="/vuepress-blog/assets/js/85.c19f75b5.js"><link rel="prefetch" href="/vuepress-blog/assets/js/86.9dcbfcae.js"><link rel="prefetch" href="/vuepress-blog/assets/js/87.a3f8e943.js"><link rel="prefetch" href="/vuepress-blog/assets/js/9.b0835361.js">
+    <link rel="stylesheet" href="/vuepress-blog/assets/css/0.styles.a146971e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>龙二的博客</h3> <p class="description" data-v-59e6cb88>不要因为别人都在交卷自己就乱写答案</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>龙二</span>
+          
+        <!---->
+        2024
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepress-blog/" class="home-link router-link-active"><img src="/vuepress-blog/龙二.jpg" alt="龙二的博客" class="logo"> <span class="site-name">龙二的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepress-blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/CSS学习笔记/" class="nav-link"><i class="undefined"></i>
+  CSS学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/《ES6入门教程》学习笔记/" class="nav-link"><i class="undefined"></i>
+  《ES6入门教程》学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/Vue学习笔记/" class="nav-link"><i class="undefined"></i>
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/vue3+ts+node.js后台管理系统/" class="nav-link"><i class="undefined"></i>
+  vue3+ts+node.js后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/从零实现一个React+Antd5.0后台管理系统/" class="nav-link"><i class="undefined"></i>
+  从零实现一个React+Antd5.0后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/javaScript学习笔记/" class="nav-link"><i class="undefined"></i>
+  javaScript学习笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      我的
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/4385276223300142" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/Alan-222" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/vuepress-blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    龙二
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>77</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>11</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/vuepress-blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/CSS学习笔记/" class="nav-link"><i class="undefined"></i>
+  CSS学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/《ES6入门教程》学习笔记/" class="nav-link"><i class="undefined"></i>
+  《ES6入门教程》学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/Vue学习笔记/" class="nav-link"><i class="undefined"></i>
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/vue3+ts+node.js后台管理系统/" class="nav-link"><i class="undefined"></i>
+  vue3+ts+node.js后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/从零实现一个React+Antd5.0后台管理系统/" class="nav-link"><i class="undefined"></i>
+  从零实现一个React+Antd5.0后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/javaScript学习笔记/" class="nav-link"><i class="undefined"></i>
+  javaScript学习笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      我的
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/4385276223300142" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/Alan-222" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/vuepress-blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>从零实现一个React+Antd5.0后台管理系统-Layout模块头部区域</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>龙二</span>
+          
+        <!---->
+        2024
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">从零实现一个React+Antd5.0后台管理系统-Layout模块头部区域</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>龙二</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2023/11/10</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>React</span><span class="tag-item" data-v-8a445198>Ant Design</span><span class="tag-item" data-v-8a445198>Redux</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>一般而言，后台管理系统都会有一个统一的布局，其中可以包含头部、侧边栏和内容区域。在本系统中，头部包含左部操作区和用户信息区域，侧边栏展示菜单和系统标题区域，内容区域就是展示 Layout 路由的子路由页面，放置<Outlet></Outlet>标签点击菜单后能展示对应子路由页面。</p> <h2 id="layout-模块"><a href="#layout-模块" class="header-anchor">#</a> Layout 模块</h2> <p>所需要的头部、侧边栏、内容区域结构大致如下图所示</p> <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9f816b0ef4124bfea66d61634fd09186~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1104&amp;h=723&amp;s=19885&amp;e=png&amp;b=ffffff" alt="img.png" referrerpolicy="no-referrer"> <p>我们先来实现外部框架。</p> <h3 id="框架实现"><a href="#框架实现" class="header-anchor">#</a> 框架实现</h3> <p>这里 Ant Design 有现成的 Layout 组件，我们挑选一个布局直接用它提供的做下改造。</p> <p><strong>src/Layout/index.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import React, { useState } from 'react'
+import { MenuFoldOutlined, MenuUnfoldOutlined, DashboardFilled } from '@ant-design/icons'
+import { Layout, Menu, Button, theme, Switch } from 'antd'
+import './Layout.scss'
+const { Header, Sider, Content } = Layout
+​
+const LayoutApp = () =&gt; {
+  const [collapsed, setCollapsed] = useState(false)
+  const {
+    token: { colorBgContainer }
+  } = theme.useToken()
+  // 侧边栏主题模式
+  const [themeVari, setThemeVari] = useState('dark')
+  // 切换侧边栏主题颜色
+  const changeTheme = (value) =&gt; {
+    setThemeVari(value ? 'light' : 'dark')
+  }
+  return (
+    &lt;Layout className=&quot;layout&quot;&gt;
+      &lt;Sider trigger={null} collapsible collapsed={collapsed} theme={themeVari}&gt;
+        &lt;div className=&quot;layout-logo-vertical&quot; style={{ color: themeVari === 'dark' ? '#fff' : '#000' }}&gt;
+          &lt;span className=&quot;layout-logo&quot;&gt;
+            {' '}
+            &lt;DashboardFilled /&gt;
+          &lt;/span&gt;
+          {!collapsed &amp;&amp; &lt;span&gt;react-antd5-admin&lt;/span&gt;}
+        &lt;/div&gt;
+        &lt;Switch
+          className=&quot;sider-switch&quot;
+          checkedChildren=&quot;☀&quot;
+          unCheckedChildren=&quot;🌙&quot;
+          onChange={changeTheme}
+          style={{ transform: collapsed ? 'translateX(15px)' : 'translateX(75px)' }}
+        /&gt;
+        &lt;Menu theme={themeVari} mode=&quot;inline&quot; defaultSelectedKeys={[]} items={[]} /&gt;
+      &lt;/Sider&gt;
+      &lt;Layout&gt;
+        &lt;Header
+          style={{
+            padding: 0,
+            background: colorBgContainer
+          }}&gt;
+          &lt;Button
+            type=&quot;text&quot;
+            icon={collapsed ? &lt;MenuUnfoldOutlined /&gt; : &lt;MenuFoldOutlined /&gt;}
+            onClick={() =&gt; setCollapsed(!collapsed)}
+            style={{
+              fontSize: '16px',
+              width: 64,
+              height: 64
+            }}
+          /&gt;
+        &lt;/Header&gt;
+        &lt;Content
+          style={{
+            margin: '24px 16px',
+            padding: 24,
+            minHeight: 280,
+            background: colorBgContainer
+          }}&gt;
+          Content
+        &lt;/Content&gt;
+      &lt;/Layout&gt;
+    &lt;/Layout&gt;
+  )
+}
+export default LayoutApp
+</code></pre></div><p>整体外观如下图：</p> <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/40dd09936f2947d386efbe86637298f3~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2559&amp;h=1206&amp;s=28380&amp;e=png&amp;b=fefefe" alt="img.png" referrerpolicy="no-referrer"> <p>完成了框架，接下来我们就来实现各个功能模块</p> <h3 id="头部区域"><a href="#头部区域" class="header-anchor">#</a> 头部区域</h3> <p>左部的操作按钮区现在就是伸缩侧边栏的按钮，右侧用户信息区域主要就是一个用户头像，悬浮出现下拉框展示修改密码、退出登录的功能按钮。</p> <h4 id="用户头像展示"><a href="#用户头像展示" class="header-anchor">#</a> 用户头像展示</h4> <p>用户的头像我们直接在全局状态中用户切片的<code>userinfo</code>字段中去取，若有的话展示，无就展示一张默认图片。</p> <div class="language- extra-class"><pre class="language-text"><code>  // 用户头像
+const avatar = useSelector(state=&gt;state.user.userinfo.avatar)
+...
+&lt;Header
+  style={{padding: 0,background: colorBgContainer,
+display: 'flex',justifyContent: 'space-between'
+}}&gt;
+...
+&lt;div className=&quot;header-right&quot;&gt;
+&lt;Space&gt;
+  &lt;img
+    src={avatar || require('@/assets/images/avatar/default_avatar.jpg')}
+    className=&quot;user-icon&quot;
+    alt=&quot;avatar&quot;
+  /&gt;
+  &lt;DownOutlined /&gt;
+&lt;/Space&gt;
+&lt;/div&gt;
+&lt;/Header&gt;
+</code></pre></div><h4 id="下拉菜单"><a href="#下拉菜单" class="header-anchor">#</a> 下拉菜单</h4> <p>下拉菜单直接用<code>Antd</code>有一个<code>Dropdown</code>组件包裹上面的用户头像</p> <blockquote><p><code>Dropdown</code></p> <ul><li><p>menu：菜单配置项，其中 items 为菜单项数组</p> <ul><li><p>items：包含菜单项 item 的配置数组</p> <ul><li><code>key</code>：菜单项的唯一标志</li> <li><code>label</code>：菜单项标题</li></ul></li></ul></li> <li><p>placement： 菜单弹出位置：<code>bottom</code> <code>bottomLeft</code> <code>bottomRight</code> <code>top</code> <code>topLeft</code> <code>topRight</code></p></li></ul></blockquote> <p>我们先按照格式设置一个菜单数组</p> <div class="language- extra-class"><pre class="language-text"><code>/** 下拉菜单 */
+// 下拉菜单项数组
+const dropdownMenuItems = [
+{
+  key: '1',
+  label: (
+    &lt;div onClick={() =&gt; console.log('个人中心')}&gt;
+      &lt;UserOutlined /&gt; 个人中心
+    &lt;/div&gt;
+  )
+},
+{
+  key: '2',
+  label: (
+    &lt;Popconfirm
+      onConfirm={() =&gt; console.log('重置密码')}
+      title=&quot;是否确认重置密码？&quot;
+      okText=&quot;重置&quot;
+      cancelText=&quot;取消&quot;&gt;
+      &lt;UndoOutlined /&gt; 重置密码
+    &lt;/Popconfirm&gt;
+  )
+},
+{
+  key: '3',
+  label: (
+    &lt;Popconfirm onConfirm={() =&gt; console.log('退出登录')} title=&quot;是否确认退出？&quot; okText=&quot;退出&quot; cancelText=&quot;取消&quot;&gt;
+      &lt;LogoutOutlined /&gt; 退出登录
+    &lt;/Popconfirm&gt;
+  )
+}]
+</code></pre></div><p>然后模板结构添加 DropDown</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;div className=&quot;header-right&quot;&gt;
+&lt;Dropdown menu={{ items: dropdownMenuItems }} placement=&quot;bottomRight&quot;&gt;
+  &lt;Space&gt;
+    ...
+  &lt;/Space&gt;
+&lt;/Dropdown&gt;
+&lt;/div&gt;
+</code></pre></div><p>完成后展示效果如下所示</p> <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d2308c259f5e4e57ab3fcaa604869e14~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=231&amp;h=277&amp;s=12543&amp;e=png&amp;b=fbfafa" alt="img.png" referrerpolicy="no-referrer"> <p>接下来我们来完成各个功能，个人中心和重置密码都是弹窗进行表单操作，因为弹窗是通用的组件，我们就先封装一个自定义弹窗。</p> <h4 id="自定义弹窗封装"><a href="#自定义弹窗封装" class="header-anchor">#</a> 自定义弹窗封装</h4> <p>弹窗的封装我们只封装最基本的弹窗组件，然后只向外暴露一个弹窗显隐的方法供外部组件使用。</p> <p><strong>src/components/CustomModal/index.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import React, { useState, useImperativeHandle, forwardRef } from 'react'
+import { Modal } from 'antd'
+// forwardRef : 传递弹窗组件的ref
+const CustomModal = forwardRef(({ title, children }, ref) =&gt; {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  // 取消事件
+  const handleCancel = () =&gt; {
+    setIsModalOpen(false)
+  }
+  // useImperativeHandle：自定义父组件ref.current接收到的方法
+  useImperativeHandle(
+    ref,
+    () =&gt; ({
+      toggleShowStatus: (status) =&gt; {
+        /** 改变状态 */
+        setIsModalOpen(status)
+      }
+    }),
+    []
+  )
+​
+  return (
+    &lt;Modal title={title} open={isModalOpen} footer={null} onCancel={handleCancel}&gt;
+      {children}
+    &lt;/Modal&gt;
+  )
+})
+export default CustomModal
+</code></pre></div><blockquote><p><code>useImperativeHandle(ref, createHandle, dependencies?)</code></p> <p>作用：在组件顶层通过调用 <code>useImperativeHandle</code> 来自定义 ref 暴露出来的句柄（避免父组件直接访问到子组件中的 DOM 节点）：</p> <ul><li><code>ref</code>：该 <code>ref</code> 是你从渲染函数中获得的第二个参数。</li> <li><code>createHandle</code>：该函数无需参数，它返回你想要暴露的 ref 的句柄。该句柄可以包含任何类型。通常，你会返回一个包含你想暴露的方法的对象。</li> <li>可选的<code>dependencies</code>：句柄中的依赖项，变化则句柄重新执行</li></ul></blockquote> <h4 id="个人中心的实现"><a href="#个人中心的实现" class="header-anchor">#</a> 个人中心的实现</h4> <p>弹窗已经封装完毕，我们现在再额外创建一个组件去构建内部表单。个人信息中需要修改的头像、用户名、昵称、邮箱作为表单项。这里用户名、昵称、邮箱等文本字段与登录表单类似，在此不再多做赘述。我们便专注于头像的修改。头像的修改用到的是<code>upload</code>上传组件。但我们首先得获取到用户的信息回显。</p> <h5 id="_1-回显信息"><a href="#_1-回显信息" class="header-anchor">#</a> 1.回显信息</h5> <p><strong>src/Layout/components/UserCenterForm.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>// 导入api
+import userApi from '@/api/user'
+...
+// 获取当前登录用户的id
+const user_id = useSelector((state) =&gt; state.user.userinfo.user_id)
+// 表单组件实例
+const [form] = Form.useForm()
+// upload组件回显图片
+const [imageUrl, setImageUrl] = useState()
+useEffect(() =&gt; {
+// 获取当前登录用户信息回显
+const fetchUserInfo = async () =&gt; {
+  const {
+    data: { name, nickname, email, avatar }
+  } = await userApi.center.get(user_id)
+  form.setFieldsValue({
+    name,
+    nickname,
+    email
+  })
+  if (avatar) setImageUrl(process.env.React_APP_IMG_API + '/' + avatar)
+}
+fetchUserInfo()
+}, [form, user_id])
+</code></pre></div><h5 id="_2-设置-upload-组件"><a href="#_2-设置-upload-组件" class="header-anchor">#</a> 2.设置 upload 组件</h5> <p>做法一样，直接去官网找 upload 组件用户头像的案例粘过来</p> <div class="language- extra-class"><pre class="language-text"><code>const getBase64 = (img, callback) =&gt; {
+  const reader = new FileReader()
+  reader.addEventListener('load', () =&gt; callback(reader.result))
+  reader.readAsDataURL(img)
+}
+const beforeUpload = (file) =&gt; {
+  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
+  if (!isJpgOrPng) {
+    message.error('You can only upload JPG/PNG file!')
+  }
+  const isLt2M = file.size / 1024 / 1024 &lt; 2
+  if (!isLt2M) {
+    message.error('Image must smaller than 2MB!')
+  }
+  return isJpgOrPng &amp;&amp; isLt2M
+}
+const UserCenterForm = (props) =&gt; {
+  // 获取token
+  const token = useSelector((state) =&gt; state.user.token)
+  const [loading, setLoading] = useState(false)
+    /** 图片上传参数及方法 */
+  const uploadUrl =
+    process.env.NODE_ENV === 'development' ? '/api/user/myInfo/updateAvatar' : '/user/myInfo/updateAvatar'
+  const handleChange = (info) =&gt; {
+    if (info.file.status === 'uploading') {
+      setLoading(true)
+      return
+    }
+    if (info.file.status === 'done') {
+      // Get this url from response in real world.
+      getBase64(info.file.originFileObj, (url) =&gt; {
+        setLoading(false)
+        setImageUrl(url)
+      })
+    }
+  }
+  const uploadButton = (
+    &lt;div&gt;
+      {loading ? &lt;LoadingOutlined /&gt; : &lt;PlusOutlined /&gt;}
+      &lt;div
+        style={{
+          marginTop: 8
+        }}&gt;
+        Upload
+      &lt;/div&gt;
+    &lt;/div&gt;
+  )
+  return (
+    &lt;&gt;
+      &lt;div style={{ marginBottom: 10 }}&gt;头像&lt;/div&gt;
+      &lt;Upload
+        name=&quot;avatar&quot;
+        listType=&quot;picture-circle&quot;
+        className=&quot;avatar-uploader&quot;
+        showUploadList={false}
+        action={uploadUrl}
+        headers={{ Authorization: token }}
+        beforeUpload={beforeUpload}
+        onChange={handleChange}
+        style={{ textAlign: 'center' }}&gt;
+        {imageUrl ? (
+          &lt;img
+            src={imageUrl}
+            alt=&quot;avatar&quot;
+            style={{
+              width: '100%'
+            }}
+          /&gt;
+        ) : (
+          uploadButton
+        )}
+      &lt;/Upload&gt;
+      {/* 其余表单项 */}
+      &lt;Form ...&gt;
+      &lt;/Form&gt;
+}
+</code></pre></div><p>3.放置该组件到弹窗里</p> <p>首先我们要引入<code>useRef hook</code>来接收子组件传递的弹窗显隐的方法，然后设置一个方法操控。其次要传递给内部表单组件以便其能关闭弹窗。</p> <p><strong>src/Layout/index.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>...
+import {useRef} from 'React'
+import UserCenterForm from './components/UserCenterForm'
+...
+/** 个人中心 */
+const userCenterRef = useRef()
+const toggleCenterStatus = (status) =&gt; {
+  userCenterRef.current.toggleShowStatus(status)
+}
+...
+&lt;CustomModal title=&quot;个人中心&quot; ref={userCenterRef}&gt;
+  &lt;UserCenterForm toggleCenterStatus={toggleCenterStatus} /&gt;
+&lt;/CustomModal&gt;
+</code></pre></div><p>个人中心大概就是这样，关键步骤就是 1.封装弹窗组件 2.编写内部表单组件 3.用弹窗组件暴露的方法控制弹窗显隐，重置密码也与此类似，就不再多写了。最后我们看一下效果图</p> <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3c47dc1dd204423aab4575324f3a7a3d~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1809&amp;h=1197&amp;s=46212&amp;e=png&amp;b=8b8b8b" alt="img.png" referrerpolicy="no-referrer"> <h4 id="退出登录"><a href="#退出登录" class="header-anchor">#</a> 退出登录</h4> <p>退出登录就是确认退出登录后，清空全局状态及浏览器存储中的<code>token</code>和<code>refreshToken</code>。这些我们之前已经写在用户切片的 reducers 配置项中，我们直接分发调用即可。然后我们还得加个确认操作，防止用户误触。</p> <p><strong>src/Layout/index.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>...
+/** 下拉菜单 */
+// 下拉菜单项数组
+const dropdownMenuItems = [
+ ...
+     {
+      key: '3',
+      label: (
+        &lt;Popconfirm onConfirm={() =&gt; handleLogout()} title=&quot;是否确认退出？&quot; okText=&quot;退出&quot; cancelText=&quot;取消&quot;&gt;
+          &lt;LogoutOutlined /&gt; 退出登录
+        &lt;/Popconfirm&gt;
+      )
+    }
+]
+</code></pre></div><p>再编写对应<code>handleLogout</code>方法</p> <div class="language- extra-class"><pre class="language-text"><code>import { logout } from '@/store/reducers/userSlice'
+...
+// 退出登录
+const handleLogout = () =&gt; {
+  dispatch(logout())
+  navigate('/login')
+}
+</code></pre></div><h2 id="代码"><a href="#代码" class="header-anchor">#</a> 代码</h2> <p>上述实现的代码都放在<a href="https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FAlan-222%2Freact-antd5-admin" title="https://github.com/Alan-222/react-antd5-admin" target="_blank" rel="noopener noreferrer">react-antd5-admin<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，大家可自行查阅</p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/vuepress-blog/blogs/从零实现一个React+Antd5.0后台管理系统-登录模块.html" class="prev">
+          从零实现一个React+Antd5.0后台管理系统-登录模块
+        </a></span> <span class="next"><a href="/vuepress-blog/blogs/从零实现一个React+Antd5.0后台管理系统-Layout模块侧边栏和内容区域.html">
+          从零实现一个React+Antd5.0后台管理系统-Layout模块侧边栏和内容区域
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E5%A4%B4%E9%83%A8%E5%8C%BA%E5%9F%9F.html#前言" class="sidebar-link reco-side-前言" data-v-b57cc07c>前言</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E5%A4%B4%E9%83%A8%E5%8C%BA%E5%9F%9F.html#layout-模块" class="sidebar-link reco-side-layout-模块" data-v-b57cc07c>Layout 模块</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E5%A4%B4%E9%83%A8%E5%8C%BA%E5%9F%9F.html#框架实现" class="sidebar-link reco-side-框架实现" data-v-b57cc07c>框架实现</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E5%A4%B4%E9%83%A8%E5%8C%BA%E5%9F%9F.html#头部区域" class="sidebar-link reco-side-头部区域" data-v-b57cc07c>头部区域</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E5%A4%B4%E9%83%A8%E5%8C%BA%E5%9F%9F.html#用户头像展示" class="sidebar-link reco-side-用户头像展示" data-v-b57cc07c>用户头像展示</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E5%A4%B4%E9%83%A8%E5%8C%BA%E5%9F%9F.html#下拉菜单" class="sidebar-link reco-side-下拉菜单" data-v-b57cc07c>下拉菜单</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E5%A4%B4%E9%83%A8%E5%8C%BA%E5%9F%9F.html#自定义弹窗封装" class="sidebar-link reco-side-自定义弹窗封装" data-v-b57cc07c>自定义弹窗封装</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E5%A4%B4%E9%83%A8%E5%8C%BA%E5%9F%9F.html#个人中心的实现" class="sidebar-link reco-side-个人中心的实现" data-v-b57cc07c>个人中心的实现</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E5%A4%B4%E9%83%A8%E5%8C%BA%E5%9F%9F.html#退出登录" class="sidebar-link reco-side-退出登录" data-v-b57cc07c>退出登录</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E5%A4%B4%E9%83%A8%E5%8C%BA%E5%9F%9F.html#代码" class="sidebar-link reco-side-代码" data-v-b57cc07c>代码</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/vuepress-blog/assets/js/app.4d1def3f.js" defer></script><script src="/vuepress-blog/assets/js/3.7d50d3e1.js" defer></script><script src="/vuepress-blog/assets/js/1.6ae6daff.js" defer></script><script src="/vuepress-blog/assets/js/76.b8a12591.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>从零实现一个React+Antd5.0后台管理系统-登录模块 | 龙二的博客</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="不要因为别人都在交卷自己就乱写答案">
+    
+    <link rel="preload" href="/vuepress-blog/assets/css/0.styles.a146971e.css" as="style"><link rel="preload" href="/vuepress-blog/assets/js/app.4d1def3f.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/3.7d50d3e1.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/1.6ae6daff.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/81.97f0bad0.js" as="script"><link rel="prefetch" href="/vuepress-blog/assets/js/10.a0094eb9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/11.8cc30e4d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/12.a3b3d038.js"><link rel="prefetch" href="/vuepress-blog/assets/js/13.a651855d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/14.7ed1ec91.js"><link rel="prefetch" href="/vuepress-blog/assets/js/15.023cd03c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/16.9ef7ac5e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/17.422ad17c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/18.a6e180bf.js"><link rel="prefetch" href="/vuepress-blog/assets/js/19.6ce1b2b0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/20.9aadbc90.js"><link rel="prefetch" href="/vuepress-blog/assets/js/21.17c3096b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/22.313dd9d1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/23.4b2555ca.js"><link rel="prefetch" href="/vuepress-blog/assets/js/24.942269f4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/25.d5f20286.js"><link rel="prefetch" href="/vuepress-blog/assets/js/26.9a829b24.js"><link rel="prefetch" href="/vuepress-blog/assets/js/27.d7f30161.js"><link rel="prefetch" href="/vuepress-blog/assets/js/28.24ce6804.js"><link rel="prefetch" href="/vuepress-blog/assets/js/29.e5f055c1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/30.1ba01103.js"><link rel="prefetch" href="/vuepress-blog/assets/js/31.3d990e36.js"><link rel="prefetch" href="/vuepress-blog/assets/js/32.bb714c7d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/33.91a0a990.js"><link rel="prefetch" href="/vuepress-blog/assets/js/34.6579c3f9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/35.27946a52.js"><link rel="prefetch" href="/vuepress-blog/assets/js/36.bf946ff3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/37.9efda974.js"><link rel="prefetch" href="/vuepress-blog/assets/js/38.2e89b085.js"><link rel="prefetch" href="/vuepress-blog/assets/js/39.a2c4046e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/4.76e26aa1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/40.e78e5bb4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/41.44229177.js"><link rel="prefetch" href="/vuepress-blog/assets/js/42.87ad822a.js"><link rel="prefetch" href="/vuepress-blog/assets/js/43.5a0a040e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/44.52849bbd.js"><link rel="prefetch" href="/vuepress-blog/assets/js/45.39a7578a.js"><link rel="prefetch" href="/vuepress-blog/assets/js/46.524bb8f0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/47.7ed73f35.js"><link rel="prefetch" href="/vuepress-blog/assets/js/48.8b86acf1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/49.5336fb9f.js"><link rel="prefetch" href="/vuepress-blog/assets/js/5.7576fc30.js"><link rel="prefetch" href="/vuepress-blog/assets/js/50.4e1f73ad.js"><link rel="prefetch" href="/vuepress-blog/assets/js/51.f2ffcee1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/52.f144a0bb.js"><link rel="prefetch" href="/vuepress-blog/assets/js/53.856ca109.js"><link rel="prefetch" href="/vuepress-blog/assets/js/54.8783a9b1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/55.230b5306.js"><link rel="prefetch" href="/vuepress-blog/assets/js/56.ac605fa3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/57.f1d2bcef.js"><link rel="prefetch" href="/vuepress-blog/assets/js/58.93d1b1c3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/59.273ec851.js"><link rel="prefetch" href="/vuepress-blog/assets/js/6.32f1aaf4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/60.d4707dc9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/61.bcea3999.js"><link rel="prefetch" href="/vuepress-blog/assets/js/62.64837723.js"><link rel="prefetch" href="/vuepress-blog/assets/js/63.2db0caf0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/64.0ca7fd83.js"><link rel="prefetch" href="/vuepress-blog/assets/js/65.028a9dfa.js"><link rel="prefetch" href="/vuepress-blog/assets/js/66.eaa80467.js"><link rel="prefetch" href="/vuepress-blog/assets/js/67.0ff1370e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/68.bc893b77.js"><link rel="prefetch" href="/vuepress-blog/assets/js/69.a22929ab.js"><link rel="prefetch" href="/vuepress-blog/assets/js/7.385ed0df.js"><link rel="prefetch" href="/vuepress-blog/assets/js/70.371b7054.js"><link rel="prefetch" href="/vuepress-blog/assets/js/71.a01ce528.js"><link rel="prefetch" href="/vuepress-blog/assets/js/72.1b0cd0f5.js"><link rel="prefetch" href="/vuepress-blog/assets/js/73.4514ed93.js"><link rel="prefetch" href="/vuepress-blog/assets/js/74.188aaa3b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/75.594b462c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/76.b8a12591.js"><link rel="prefetch" href="/vuepress-blog/assets/js/77.ee8dae13.js"><link rel="prefetch" href="/vuepress-blog/assets/js/78.921e11a2.js"><link rel="prefetch" href="/vuepress-blog/assets/js/79.15260a1b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/8.f0575d67.js"><link rel="prefetch" href="/vuepress-blog/assets/js/80.b8683be3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/82.fca1fb9c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/83.465cd15c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/84.82978ff2.js"><link rel="prefetch" href="/vuepress-blog/assets/js/85.c19f75b5.js"><link rel="prefetch" href="/vuepress-blog/assets/js/86.9dcbfcae.js"><link rel="prefetch" href="/vuepress-blog/assets/js/87.a3f8e943.js"><link rel="prefetch" href="/vuepress-blog/assets/js/9.b0835361.js">
+    <link rel="stylesheet" href="/vuepress-blog/assets/css/0.styles.a146971e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>龙二的博客</h3> <p class="description" data-v-59e6cb88>不要因为别人都在交卷自己就乱写答案</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>龙二</span>
+          
+        <!---->
+        2024
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepress-blog/" class="home-link router-link-active"><img src="/vuepress-blog/龙二.jpg" alt="龙二的博客" class="logo"> <span class="site-name">龙二的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepress-blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/CSS学习笔记/" class="nav-link"><i class="undefined"></i>
+  CSS学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/《ES6入门教程》学习笔记/" class="nav-link"><i class="undefined"></i>
+  《ES6入门教程》学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/Vue学习笔记/" class="nav-link"><i class="undefined"></i>
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/vue3+ts+node.js后台管理系统/" class="nav-link"><i class="undefined"></i>
+  vue3+ts+node.js后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/从零实现一个React+Antd5.0后台管理系统/" class="nav-link"><i class="undefined"></i>
+  从零实现一个React+Antd5.0后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/javaScript学习笔记/" class="nav-link"><i class="undefined"></i>
+  javaScript学习笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      我的
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/4385276223300142" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/Alan-222" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/vuepress-blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    龙二
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>77</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>11</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/vuepress-blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/CSS学习笔记/" class="nav-link"><i class="undefined"></i>
+  CSS学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/《ES6入门教程》学习笔记/" class="nav-link"><i class="undefined"></i>
+  《ES6入门教程》学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/Vue学习笔记/" class="nav-link"><i class="undefined"></i>
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/vue3+ts+node.js后台管理系统/" class="nav-link"><i class="undefined"></i>
+  vue3+ts+node.js后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/从零实现一个React+Antd5.0后台管理系统/" class="nav-link"><i class="undefined"></i>
+  从零实现一个React+Antd5.0后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/javaScript学习笔记/" class="nav-link"><i class="undefined"></i>
+  javaScript学习笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      我的
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/4385276223300142" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/Alan-222" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/vuepress-blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>从零实现一个React+Antd5.0后台管理系统-登录模块</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>龙二</span>
+          
+        <!---->
+        2024
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">从零实现一个React+Antd5.0后台管理系统-登录模块</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>龙二</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2023/11/8</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>React</span><span class="tag-item" data-v-8a445198>Ant Design</span><span class="tag-item" data-v-8a445198>Redux</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>本系统在未存储<code>token</code>或<code>refreshToken</code>过期时会跳到登录界面，本文就来着手实现登录模块。关键点主要是</p> <p>1.返回的<code>svg图形验证码</code>如何展示</p> <p>2.记住密码的功能如何实现</p> <p>3.密码不可明文存储，要加密</p> <p>4.登录后如何回到上次浏览的界面</p> <h2 id="静态登录页实现"><a href="#静态登录页实现" class="header-anchor">#</a> 静态登录页实现</h2> <p>实现静态登录页我们用到了<code>Antd5.0</code>的 Form 表单组件。这里大概梳理一下用到的组件属性</p> <blockquote><p>Form</p> <ul><li><code>labelCol</code>、<code>wrapperCol</code>：采用了栅格布局，分别设置标签和输入控件的 span 占位格数和 offset 左侧的间隔格数等</li> <li><code>form</code>： 经 <code>Form.useForm()</code> 创建的 form 控制实例，不提供时会自动创建</li> <li><code>initialValues</code>：传入的是一个对象，可以设置表单的默认值</li> <li><code>onFinish</code>：提交表单且数据验证成功后回调事件</li></ul> <p>Form.Item</p> <ul><li><code>name</code>：字段名</li> <li><code>rules</code>：设置字段的校验逻辑</li></ul></blockquote> <p>然后我们大概调整一下样式，代码如下：</p> <p><strong>src/pages/Login/index.jsx</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useEffect<span class="token punctuation">,</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Button<span class="token punctuation">,</span> Checkbox<span class="token punctuation">,</span> Form<span class="token punctuation">,</span> Input <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'antd'</span>
+​
+<span class="token keyword">import</span> classes <span class="token keyword">from</span> <span class="token string">'./Login.module.scss'</span>
+​
+<span class="token keyword">const</span> <span class="token function-variable function">Login</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** 登录表单参数与方法 */</span>
+  <span class="token comment">// 获取antd的form实例</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>form<span class="token punctuation">]</span> <span class="token operator">=</span> Form<span class="token punctuation">.</span><span class="token function">useForm</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// 按钮loading</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>loading<span class="token punctuation">,</span> setLoading<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+​
+  <span class="token keyword">const</span> <span class="token function-variable function">onFinish</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">values</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>values<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+​
+  <span class="token comment">// 登录页显示欢迎语</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>welcomeText<span class="token punctuation">,</span> setWelcomeText<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">typeWriter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">wordSplit<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;</span> wordSplit<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">setWelcomeText</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">pre</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        index<span class="token operator">++</span>
+        <span class="token keyword">return</span> pre <span class="token operator">+</span> wordSplit<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">typeWriter</span><span class="token punctuation">(</span>wordSplit<span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+​
+  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>
+    <span class="token keyword">const</span> wordSplit <span class="token operator">=</span> <span class="token string">'Welcome'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+    <span class="token function">typeWriter</span><span class="token punctuation">(</span>wordSplit<span class="token punctuation">,</span> index<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+​
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token punctuation">{</span>classes<span class="token punctuation">.</span>login<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token punctuation">{</span>classes<span class="token punctuation">[</span><span class="token string">'login-container'</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token punctuation">{</span>classes<span class="token punctuation">[</span><span class="token string">'login-text'</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>welcomeText<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token punctuation">{</span>classes<span class="token punctuation">[</span><span class="token string">'login-form'</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>Form
+            name<span class="token operator">=</span><span class="token string">&quot;basic&quot;</span>
+            form<span class="token operator">=</span><span class="token punctuation">{</span>form<span class="token punctuation">}</span>
+            labelCol<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">span</span><span class="token operator">:</span> <span class="token number">8</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+            wrapperCol<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">span</span><span class="token operator">:</span> <span class="token number">16</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+            initialValues<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">remember</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+            onFinish<span class="token operator">=</span><span class="token punctuation">{</span>onFinish<span class="token punctuation">}</span>
+            autoComplete<span class="token operator">=</span><span class="token string">&quot;off&quot;</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item label<span class="token operator">=</span><span class="token string">&quot;用户名&quot;</span> name<span class="token operator">=</span><span class="token string">&quot;username&quot;</span> rules<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">required</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">max</span><span class="token operator">:</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'请输入用户名!'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>Input <span class="token operator">/</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span>
+​
+            <span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item label<span class="token operator">=</span><span class="token string">&quot;密码&quot;</span> name<span class="token operator">=</span><span class="token string">&quot;password&quot;</span> rules<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">required</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'请输入密码!'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>Input<span class="token punctuation">.</span>Password <span class="token operator">/</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span>
+​
+            <span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item
+              label<span class="token operator">=</span><span class="token string">&quot;验证码&quot;</span>
+              name<span class="token operator">=</span><span class="token string">&quot;checkCode&quot;</span>
+              rules<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">required</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">min</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token literal-property property">max</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'请输入正确格式验证码!'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>Input <span class="token operator">/</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span>
+​
+            <span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item name<span class="token operator">=</span><span class="token string">&quot;remember&quot;</span> valuePropName<span class="token operator">=</span><span class="token string">&quot;checked&quot;</span> wrapperCol<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">offset</span><span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token literal-property property">span</span><span class="token operator">:</span> <span class="token number">16</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>Checkbox<span class="token operator">&gt;</span>记住密码<span class="token operator">&lt;</span><span class="token operator">/</span>Checkbox<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span>
+​
+            <span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item wrapperCol<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">offset</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token literal-property property">span</span><span class="token operator">:</span> <span class="token number">16</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>Button type<span class="token operator">=</span><span class="token string">&quot;primary&quot;</span> htmlType<span class="token operator">=</span><span class="token string">&quot;submit&quot;</span> loading<span class="token operator">=</span><span class="token punctuation">{</span>loading<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+                登录
+              <span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>Button htmlType<span class="token operator">=</span><span class="token string">&quot;reset&quot;</span> style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">marginLeft</span><span class="token operator">:</span> <span class="token string">'32px'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+                重置
+              <span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> Login
+</code></pre></div><h2 id="展示图形验证码"><a href="#展示图形验证码" class="header-anchor">#</a> 展示图形验证码</h2> <p>1.请求接口获取<code>svg</code>验证码</p> <p>接口获取验证码需要唯一键值 uuid，我们这里先用当前时间戳。然后再设置一个变量来存储验证码图片（格式为 svg）</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 导入api</span>
+<span class="token keyword">import</span> userApi <span class="token keyword">from</span> <span class="token string">'@/api/user'</span>
+<span class="token operator">...</span>
+<span class="token comment">// 验证码uuid</span>
+<span class="token keyword">const</span> <span class="token punctuation">[</span>uuid<span class="token punctuation">,</span> setUuid<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// 验证码svg标签</span>
+<span class="token keyword">const</span> <span class="token punctuation">[</span>verifyImg<span class="token punctuation">,</span>setVerifyImg<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// 获取验证码</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getCode</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> uuid <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token function">setUuid</span><span class="token punctuation">(</span>uuid<span class="token punctuation">)</span>
+  userApi<span class="token punctuation">.</span>login<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>uuid<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">setVerifyImg</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>
+  <span class="token function">getCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre></div><p>2.展示图形验证码</p> <p>展示 html 结构在 vue 中可能有小伙伴知道用<code>v-html</code>指令。在 React 中也有类似的属性<code>dangerouslySetInnerHTML</code>，但从名称也可以看出其不当使用是有危险性的。我们在表单项输入框的后缀直接展示验证码。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item
+  label<span class="token operator">=</span><span class="token string">&quot;验证码&quot;</span>
+  name<span class="token operator">=</span><span class="token string">&quot;checkCode&quot;</span>
+  rules<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">required</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">min</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token literal-property property">max</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'请输入正确格式验证码!'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>Input
+<span class="token operator">+</span>    suffix<span class="token operator">=</span><span class="token punctuation">{</span>
+<span class="token operator">+</span>      <span class="token operator">&lt;</span>div
+<span class="token operator">+</span>        dangerouslySetInnerHTML<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">__html</span><span class="token operator">:</span> verifyImg <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token operator">+</span>        className<span class="token operator">=</span><span class="token string">&quot;login-captcha&quot;</span>
+<span class="token operator">+</span>        onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">getCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token punctuation">}</span>
+  <span class="token operator">/</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span>
+</code></pre></div><p>验证码就能够展示在验证码输入框，效果如下图。</p> <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7d7db3c78d924a918745fba16415d0ef~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2559&amp;h=1206&amp;s=1824469&amp;e=png&amp;b=8fa8aa" alt="img.png" referrerpolicy="no-referrer"> <h2 id="记住密码"><a href="#记住密码" class="header-anchor">#</a> 记住密码</h2> <p>记住密码的功能步骤分为两步</p> <p>1.勾选了记住密码，点击登录将信息存储到浏览器<code>localstorage</code>，设置过期期限 7 天</p> <p>2.未勾选记住密码，点击登录清空浏览器存储中的信息</p> <div class="language- extra-class"><pre class="language-text"><code>const onFinish = async (values) =&gt; {
+  // 开始loading
+  setLoading(true)
+  // 记住密码存储用户信息
+  if (values.remember) {
+    localStorage.setItem('username', values.username, { expires: 7})
+    localStorage.setItem('password', values.password, { expires: 7})
+    localStorage.setItem('remember', values.remember, { expires: 7})
+    } else {
+  // 移除用户信息
+    localStorage.removeItem('username')
+    localStorage.removeItem('password')
+    localStorage.removeItem('remember')
+  }
+  console.log(values)
+}
+</code></pre></div><p>然后当我们每次进入登录页的时候，去浏览器存储中取信息，若有则回显到表单。</p> <div class="language- extra-class"><pre class="language-text"><code>// 获取缓存中的用户名密码信息
+const getUser = () =&gt; {
+  const username = localStorage.getItem('username') ?? ''
+  const password = localStorage.getItem('password') ?? ''
+  const remember = localStorage.getItem('remember') ?? false
+  // 通过antd表单实例对象的setFieldsValue方法回显值
+  form.setFieldsValue({
+    username,
+    password,
+    remember: Boolean(remember)
+  })
+}
+useEffect(() =&gt; {
+  ...
+  getUser()
+}, [])
+</code></pre></div><p>就能看到以下效果，刷新重新进入能够回显上次记住的信息。</p> <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3f8b26ad1a904fe2aaa0e8e027f18875~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2559&amp;h=1206&amp;s=1284660&amp;e=png&amp;b=f1eeec" alt="img.png" referrerpolicy="no-referrer"> <h2 id="密码加密"><a href="#密码加密" class="header-anchor">#</a> 密码加密</h2> <p>但记住密码后可以发现密码存储是明文的，这对于用户密码的安全性是有威胁的。我们可以对其进行加密后再进行存储，再次获取信息时进行解密。</p> <p>1.安装<code>jsencrypt</code>库</p> <div class="language- extra-class"><pre class="language-text"><code>npm i jsencrypt@3
+</code></pre></div><p>2.用 RSA 的密钥对（不对称加密【公钥加密，私钥解密】）对<code>jsencrypt</code>库进行封装，导出加解密的方法</p> <p><strong>src/utils/jsencrypt.js</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import { JSEncrypt } from 'jsencrypt'
+​
+// 密钥对生成 http://web.chacuo.net/netrsakeypair
+​
+const publicKey =
+  '-----BEGIN PUBLIC KEY-----\n' +
+  ....此处用上面生成的公钥
+  '-----END PUBLIC KEY-----'
+​
+const privateKey =
+  '-----BEGIN PRIVATE KEY-----\n' +
+  ....此处用上面生成的私钥
+  '-----END PRIVATE KEY-----'
+​
+// 加密
+export function encrypt(txt) {
+  const encryptor = new JSEncrypt()
+  encryptor.setPublicKey(publicKey) // 设置公钥
+  return encryptor.encrypt(txt) // 对数据进行加密
+}
+​
+// 解密
+export function decrypt(txt) {
+  const encryptor = new JSEncrypt()
+  encryptor.setPrivateKey(privateKey) // 设置私钥
+  return encryptor.decrypt(txt) // 对数据进行解密
+}
+</code></pre></div><p>3.登录组件中使用</p> <p><strong>src/pages/Login/index.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>...
+// 导入加密解密方法
+import { encrypt, decrypt } from '@/utils/jsencrypt'
+...
+// 提交方法
+const onFinish = async (values) =&gt; {
+  // 记住密码存储用户信息
+  if (values.remember) {
+    localStorage.setItem('username', values.username, { expires: 7})
++   localStorage.setItem('password', encrypt(values.password), { expires: 7 })
+...
+}
+// 获取缓存中的用户名密码信息
+const getUser = () =&gt; {
+  ...
+  form.setFieldsValue({
+    username,
+    password:decrypt(password),
+}
+</code></pre></div><h2 id="提交"><a href="#提交" class="header-anchor">#</a> 提交</h2> <p>以上步骤都进行完后就可以提交填写的信息到接口。提交接口我们直接分发到之前封装好的<code>Redux</code>登录异步方法存储<code>token</code>和<code>refreshToken</code></p> <div class="language- extra-class"><pre class="language-text"><code>...
+ import { useNavigate } from 'react-router-dom'
+ import { useDispatch } from 'react-redux'
+ import {loginAsync} from '@/store/reducers/userSlice'
+ import {message} from 'antd'
+...
+ const dispatch = useDispatch()
+ const navigate = useNavigate()
+// 提交方法
+const onFinish = async (values) =&gt; {
+  ...
++  try {
++    await dispatch(loginAsync({ ...values, uuid }))
++    setLoading(false)
++    // 跳转到首页
++    navigate('/',{replace:true})
++    message.success('登录成功！')
++  } catch (e) {
++    console.error(e)
++    getCode()
++    setLoading(false)
+}
+}
+</code></pre></div><p>然后输入我提供的默认账号：Alan，密码：1234567 和验证码点击登录即可跳转至首页</p> <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2021a2b65521436f86f0e76052bc2270~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1459&amp;h=496&amp;s=22471&amp;e=png&amp;b=ffffff" alt="img.png" referrerpolicy="no-referrer"> <h2 id="登录重定向至上次浏览页面"><a href="#登录重定向至上次浏览页面" class="header-anchor">#</a> 登录重定向至上次浏览页面</h2> <p>但是我们每次点击登录都跳到首页用户体验是不太好的，比如我上次输入了网址<a href="http://localhost:3000/system/user" target="_blank" rel="noopener noreferrer">http://localhost:3000/system/user<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>登录之后应该是跳到用户管理的页面。</p> <p>会发生跳转登录页面的情况就是无 token，那我们只要在它跳转的时候带一个参数为当前链接即可。</p> <p><strong>src/App.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import {useLocation} from 'react-router-dom'
+useEffect(() =&gt; {
+  const fetchData = async () =&gt; {
+    if(getToken()){...}
+    else{
+      // 传递整个location作为参数
++       navigate('/login', { replace: true, state: { preLocation: location } })
+    }
+  }
+  fetchData()
+}, [dispatch])
+</code></pre></div><p>然后我们在登录页用<code>location.state?.preLocation?.pathname</code>接收跳转路径即可，然后点击登录跳转至此路径</p> <blockquote><p>这里用可选链是因为不一定所有跳转登录页的情况都携带<code>preLocation</code>参数</p></blockquote> <p><strong>src/page/Login/index.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>const location = useLocation()
+const from = location.state?.preLocation?.pathname || '/'
+// 提交方法
+const onFinish = async (values) =&gt; {
+  ...
++  // 若上次为登录页，跳转到首页
++ if (from === '/login') navigate('/', { replace: true })
++ navigate(from, { replace: true })
+  ...
+}
+</code></pre></div><p>然后我们把<code>localStorage</code>的缓存清掉，输入 url<a href="http://localhost:3000/system/user" target="_blank" rel="noopener noreferrer">http://localhost:3000/system/user<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。然后会转到登录页，我们正常登录，如下图跳转成功。</p> <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/55d1985c01bd47bfb56d30debbcbe5f4~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=565&amp;h=238&amp;s=13665&amp;e=png&amp;b=ffffff" alt="img.png" referrerpolicy="no-referrer"> <h2 id="代码"><a href="#代码" class="header-anchor">#</a> 代码</h2> <p>上述实现的代码都放在<a href="https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FAlan-222%2Freact-antd5-admin" title="https://github.com/Alan-222/react-antd5-admin" target="_blank" rel="noopener noreferrer">react-antd5-admin<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，大家可自行查阅</p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/vuepress-blog/blogs/从零实现一个React+Antd5.0后台管理系统-Redux异步操作与Axios刷新token.html" class="prev">
+          从零实现一个React+Antd5.0后台管理系统-Redux异步操作与Axios刷新token
+        </a></span> <span class="next"><a href="/vuepress-blog/blogs/从零实现一个React+Antd5.0后台管理系统-Layout模块头部区域.html">
+          从零实现一个React+Antd5.0后台管理系统-Layout模块头部区域
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97.html#前言" class="sidebar-link reco-side-前言" data-v-b57cc07c>前言</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97.html#静态登录页实现" class="sidebar-link reco-side-静态登录页实现" data-v-b57cc07c>静态登录页实现</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97.html#展示图形验证码" class="sidebar-link reco-side-展示图形验证码" data-v-b57cc07c>展示图形验证码</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97.html#记住密码" class="sidebar-link reco-side-记住密码" data-v-b57cc07c>记住密码</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97.html#密码加密" class="sidebar-link reco-side-密码加密" data-v-b57cc07c>密码加密</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97.html#提交" class="sidebar-link reco-side-提交" data-v-b57cc07c>提交</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97.html#登录重定向至上次浏览页面" class="sidebar-link reco-side-登录重定向至上次浏览页面" data-v-b57cc07c>登录重定向至上次浏览页面</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%99%BB%E5%BD%95%E6%A8%A1%E5%9D%97.html#代码" class="sidebar-link reco-side-代码" data-v-b57cc07c>代码</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/vuepress-blog/assets/js/app.4d1def3f.js" defer></script><script src="/vuepress-blog/assets/js/3.7d50d3e1.js" defer></script><script src="/vuepress-blog/assets/js/1.6ae6daff.js" defer></script><script src="/vuepress-blog/assets/js/81.97f0bad0.js" defer></script>
+  </body>
+</html>

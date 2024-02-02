@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>从零实现一个React+Antd5.0后台管理系统-接口请求封装 | 龙二的博客</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="不要因为别人都在交卷自己就乱写答案">
+    
+    <link rel="preload" href="/vuepress-blog/assets/css/0.styles.a146971e.css" as="style"><link rel="preload" href="/vuepress-blog/assets/js/app.4d1def3f.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/3.7d50d3e1.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/1.6ae6daff.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/80.b8683be3.js" as="script"><link rel="prefetch" href="/vuepress-blog/assets/js/10.a0094eb9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/11.8cc30e4d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/12.a3b3d038.js"><link rel="prefetch" href="/vuepress-blog/assets/js/13.a651855d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/14.7ed1ec91.js"><link rel="prefetch" href="/vuepress-blog/assets/js/15.023cd03c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/16.9ef7ac5e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/17.422ad17c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/18.a6e180bf.js"><link rel="prefetch" href="/vuepress-blog/assets/js/19.6ce1b2b0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/20.9aadbc90.js"><link rel="prefetch" href="/vuepress-blog/assets/js/21.17c3096b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/22.313dd9d1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/23.4b2555ca.js"><link rel="prefetch" href="/vuepress-blog/assets/js/24.942269f4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/25.d5f20286.js"><link rel="prefetch" href="/vuepress-blog/assets/js/26.9a829b24.js"><link rel="prefetch" href="/vuepress-blog/assets/js/27.d7f30161.js"><link rel="prefetch" href="/vuepress-blog/assets/js/28.24ce6804.js"><link rel="prefetch" href="/vuepress-blog/assets/js/29.e5f055c1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/30.1ba01103.js"><link rel="prefetch" href="/vuepress-blog/assets/js/31.3d990e36.js"><link rel="prefetch" href="/vuepress-blog/assets/js/32.bb714c7d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/33.91a0a990.js"><link rel="prefetch" href="/vuepress-blog/assets/js/34.6579c3f9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/35.27946a52.js"><link rel="prefetch" href="/vuepress-blog/assets/js/36.bf946ff3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/37.9efda974.js"><link rel="prefetch" href="/vuepress-blog/assets/js/38.2e89b085.js"><link rel="prefetch" href="/vuepress-blog/assets/js/39.a2c4046e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/4.76e26aa1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/40.e78e5bb4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/41.44229177.js"><link rel="prefetch" href="/vuepress-blog/assets/js/42.87ad822a.js"><link rel="prefetch" href="/vuepress-blog/assets/js/43.5a0a040e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/44.52849bbd.js"><link rel="prefetch" href="/vuepress-blog/assets/js/45.39a7578a.js"><link rel="prefetch" href="/vuepress-blog/assets/js/46.524bb8f0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/47.7ed73f35.js"><link rel="prefetch" href="/vuepress-blog/assets/js/48.8b86acf1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/49.5336fb9f.js"><link rel="prefetch" href="/vuepress-blog/assets/js/5.7576fc30.js"><link rel="prefetch" href="/vuepress-blog/assets/js/50.4e1f73ad.js"><link rel="prefetch" href="/vuepress-blog/assets/js/51.f2ffcee1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/52.f144a0bb.js"><link rel="prefetch" href="/vuepress-blog/assets/js/53.856ca109.js"><link rel="prefetch" href="/vuepress-blog/assets/js/54.8783a9b1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/55.230b5306.js"><link rel="prefetch" href="/vuepress-blog/assets/js/56.ac605fa3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/57.f1d2bcef.js"><link rel="prefetch" href="/vuepress-blog/assets/js/58.93d1b1c3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/59.273ec851.js"><link rel="prefetch" href="/vuepress-blog/assets/js/6.32f1aaf4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/60.d4707dc9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/61.bcea3999.js"><link rel="prefetch" href="/vuepress-blog/assets/js/62.64837723.js"><link rel="prefetch" href="/vuepress-blog/assets/js/63.2db0caf0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/64.0ca7fd83.js"><link rel="prefetch" href="/vuepress-blog/assets/js/65.028a9dfa.js"><link rel="prefetch" href="/vuepress-blog/assets/js/66.eaa80467.js"><link rel="prefetch" href="/vuepress-blog/assets/js/67.0ff1370e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/68.bc893b77.js"><link rel="prefetch" href="/vuepress-blog/assets/js/69.a22929ab.js"><link rel="prefetch" href="/vuepress-blog/assets/js/7.385ed0df.js"><link rel="prefetch" href="/vuepress-blog/assets/js/70.371b7054.js"><link rel="prefetch" href="/vuepress-blog/assets/js/71.a01ce528.js"><link rel="prefetch" href="/vuepress-blog/assets/js/72.1b0cd0f5.js"><link rel="prefetch" href="/vuepress-blog/assets/js/73.4514ed93.js"><link rel="prefetch" href="/vuepress-blog/assets/js/74.188aaa3b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/75.594b462c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/76.b8a12591.js"><link rel="prefetch" href="/vuepress-blog/assets/js/77.ee8dae13.js"><link rel="prefetch" href="/vuepress-blog/assets/js/78.921e11a2.js"><link rel="prefetch" href="/vuepress-blog/assets/js/79.15260a1b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/8.f0575d67.js"><link rel="prefetch" href="/vuepress-blog/assets/js/81.97f0bad0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/82.fca1fb9c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/83.465cd15c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/84.82978ff2.js"><link rel="prefetch" href="/vuepress-blog/assets/js/85.c19f75b5.js"><link rel="prefetch" href="/vuepress-blog/assets/js/86.9dcbfcae.js"><link rel="prefetch" href="/vuepress-blog/assets/js/87.a3f8e943.js"><link rel="prefetch" href="/vuepress-blog/assets/js/9.b0835361.js">
+    <link rel="stylesheet" href="/vuepress-blog/assets/css/0.styles.a146971e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>龙二的博客</h3> <p class="description" data-v-59e6cb88>不要因为别人都在交卷自己就乱写答案</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>龙二</span>
+          
+        <!---->
+        2024
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepress-blog/" class="home-link router-link-active"><img src="/vuepress-blog/龙二.jpg" alt="龙二的博客" class="logo"> <span class="site-name">龙二的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepress-blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/CSS学习笔记/" class="nav-link"><i class="undefined"></i>
+  CSS学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/《ES6入门教程》学习笔记/" class="nav-link"><i class="undefined"></i>
+  《ES6入门教程》学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/Vue学习笔记/" class="nav-link"><i class="undefined"></i>
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/vue3+ts+node.js后台管理系统/" class="nav-link"><i class="undefined"></i>
+  vue3+ts+node.js后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/从零实现一个React+Antd5.0后台管理系统/" class="nav-link"><i class="undefined"></i>
+  从零实现一个React+Antd5.0后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/javaScript学习笔记/" class="nav-link"><i class="undefined"></i>
+  javaScript学习笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      我的
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/4385276223300142" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/Alan-222" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/vuepress-blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    龙二
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>77</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>11</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/vuepress-blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/CSS学习笔记/" class="nav-link"><i class="undefined"></i>
+  CSS学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/《ES6入门教程》学习笔记/" class="nav-link"><i class="undefined"></i>
+  《ES6入门教程》学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/Vue学习笔记/" class="nav-link"><i class="undefined"></i>
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/vue3+ts+node.js后台管理系统/" class="nav-link"><i class="undefined"></i>
+  vue3+ts+node.js后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/从零实现一个React+Antd5.0后台管理系统/" class="nav-link"><i class="undefined"></i>
+  从零实现一个React+Antd5.0后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/javaScript学习笔记/" class="nav-link"><i class="undefined"></i>
+  javaScript学习笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      我的
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/4385276223300142" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/Alan-222" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/vuepress-blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>从零实现一个React+Antd5.0后台管理系统-接口请求封装</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>龙二</span>
+          
+        <!---->
+        2024
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">从零实现一个React+Antd5.0后台管理系统-接口请求封装</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>龙二</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2023/10/24</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>React</span><span class="tag-item" data-v-8a445198>Ant Design</span><span class="tag-item" data-v-8a445198>Redux</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>之前我们提到了<code>token</code>的全局状态存储，对于后台管理系统而言，业务信息接口带上请求头 token 是有必要的，故我们在此对 http 请求工具库<code>axios</code>做一下封装。当然，首先需要安装。</p> <h2 id="http-请求工具-axios-封装"><a href="#http-请求工具-axios-封装" class="header-anchor">#</a> Http 请求工具 axios 封装</h2> <h3 id="介绍"><a href="#介绍" class="header-anchor">#</a> 介绍</h3> <blockquote><p>Axios 是一个基于 <strong>promise</strong> 网络请求库，作用于<code>node.js</code> 和浏览器中。 它是 同构的(即同一套代码可以运行在浏览器和 node.js 中)。在服务端它使用原生 node.js <code>http</code> 模块, 而在客户端 (浏览端) 则使用 XMLHttpRequests。</p></blockquote> <h3 id="安装-axios-与-antd"><a href="#安装-axios-与-antd" class="header-anchor">#</a> 安装 axios 与 antd</h3> <div class="language- extra-class"><pre class="language-text"><code>npm install axios
+npm install antd --save
+</code></pre></div><h3 id="封装-axios"><a href="#封装-axios" class="header-anchor">#</a> 封装 axios</h3> <p>src 下创建 utils 文件夹，在其下新建<code>request.js</code>文件。随后设置请求拦截器，如果请求的是业务接口那么请求头带上 token，如果不是的话加入白名单。响应拦截器则需要对返回 blob 文件流和正常业务数据做判断，文件流直接返回，而业务数据返回 data 数据。</p> <h4 id="设置拦截器"><a href="#设置拦截器" class="header-anchor">#</a> 设置拦截器</h4> <p><strong>src/utils/request.js</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import Axios from 'axios'
+import { getToken } from '../utils/auth'
+// 用axios的message来提示接口响应状况
+import { message } from 'antd'
+​
+​
+const BASE_URL = process.env.NODE_ENV==='production'?'':'/api' //请求接口url 如果不配置 则默认访问链接地址
+const TIME_OUT = 20000 // 接口超时时间
+​
+const instance = Axios.create({
+  baseURL: BASE_URL,
+  timeout: TIME_OUT
+})
+​
+// 不需要token的接口白名单
+const whiteList = ['/user/login', '/user/checkCode']
+​
+// 添加请求拦截器
+instance.interceptors.request.use(
+  (config) =&gt; {
+    if (config.url &amp;&amp; typeof config.url === 'string') {
+      if (!whiteList.includes(config.url)) {
+        let Token = getToken()
+        if (Token &amp;&amp; Token.length &gt; 0) {
+          config.headers &amp;&amp; (config.headers['Authorization'] = Token)
+        }
+      }
+    }
+    return config
+  },
+  (error) =&gt; {
+    return Promise.reject(error)
+  }
+)
+// 添加响应拦截器
+instance.interceptors.response.use(
+  (response) =&gt; {
+    // 如果返回的类型为二进制文件类型
+    if (response.config.responseType === 'blob') {
+      if (response.status !== 200) {
+        message.error('请求失败' + response.status)
+        return Promise.reject()
+      } else if (!response.headers['content-disposition']) {
+        message.error('暂无接口访问权限')
+        return Promise.reject()
+      }
+      return response
+    } else {
+      // 如果接口请求失败
+      if (response.data.code !== 0) {
+        let errMsg = response.data.message || '系统错误'
+        return Promise.reject(errMsg)
+      }
+      return response.data
+    }
+  },
+  (error) =&gt; {
+    return Promise.reject(error)
+  }
+)
+</code></pre></div><h2 id="测试接口服务"><a href="#测试接口服务" class="header-anchor">#</a> 测试接口服务</h2> <h3 id="所需准备"><a href="#所需准备" class="header-anchor">#</a> 所需准备</h3> <h4 id="后端服务及接口文档"><a href="#后端服务及接口文档" class="header-anchor">#</a> 后端服务及接口文档</h4> <p>接下来要测试接口服务的话，这里就要用到之前给大家提供的 node 后端服务器</p> <p>【<a href="https://github.com/Alan-222/Vue3_Ts_NodeJs_management_system_server" target="_blank" rel="noopener noreferrer">node 后端服务器<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>】：</p> <p>1.克隆到本地后新建 mysql 数据库并运行 sql 目录下的 database.sql 文件</p> <p>2.修改 model 目录下 init.js 中的数据库信息</p> <p>2.<code>npm install</code>安装依赖</p> <p>3.<code>npm start</code>启动服务</p> <p>【<a href="https://github.com/tporadowski/redis/releases" target="_blank" rel="noopener noreferrer">Redis<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>】：用于验证码的缓存</p> <p>1.点击链接并安装 msi 后缀的版本</p> <p>2.设置默认端口 6379，密码 123456</p> <p>【<a href="https://github.com/Alan-222/Vue3_Ts_NodeJs_management_system_server/blob/master/vue_ts-server/vue3%2Bts%2BnodeJS%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%EF%BC%88%E6%8E%A5%E5%8F%A3%E5%9C%B0%E5%9D%80%2B%E5%8F%82%E6%95%B0%EF%BC%89.md" target="_blank" rel="noopener noreferrer">接口文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>】：提供了接口 url 信息及所需请求参数</p> <h4 id="前端跨域配置"><a href="#前端跨域配置" class="header-anchor">#</a> 前端跨域配置</h4> <p>1.安装 http-proxy-middleware 模块</p> <div class="language- extra-class"><pre class="language-text"><code>npm i http-proxy-middleware --save
+</code></pre></div><p>2.<code>src</code>下新建<code>setupProxy.js</code>文件（文件名必须一致）</p> <p><strong>src/setupProxy.js</strong></p> <div class="language- extra-class"><pre class="language-text"><code>const { createProxyMiddleware } = require('http-proxy-middleware')
+module.exports = function (app) {
+  app.use(
+    '/api',
+    createProxyMiddleware({
+      target: 'http://127.0.0.1:9999', // 后台服务地址以及端口号
+      changeOrigin: true, // 是否开启代理
+      pathRewrite: {
+        '/api': '' // 代理前缀重写
+      }
+    })
+  )
+}
+</code></pre></div><p>3.重启项目（<strong>必须</strong>）</p> <h3 id="测试接口"><a href="#测试接口" class="header-anchor">#</a> 测试接口</h3> <p>完成跨域配置之后，我们就可以在项目中尝试是否能够连通接口。我们把之前 Home 组件测试 redux 的代码删掉，开始编写接口方法。</p> <p>1.引入封装的<code>axios</code>实例</p> <div class="language- extra-class"><pre class="language-text"><code>import request from '@/utils/request'
+</code></pre></div><p>2.编写<code>axios</code>连接接口方法（这里以获取验证码为例）</p> <p><strong>src/pages/Home/index.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import React, { useEffect } from 'react'
+import request from '@/utils/request'
+const Home = () =&gt; {
+  useEffect(() =&gt; {
+    const fetchCode = async () =&gt; {
+      const code = await request({
+        url: 'http://127.0.0.1:9999/user/checkCode',
+        method: 'get',
+        params: {
+          // 用当前时间戳作为验证码的id
+          uuid: new Date().getTime()
+        }
+      })
+      console.log(code)
+    }
+    fetchCode()
+  }, [])
+  return &lt;div&gt;Home&lt;/div&gt;
+}
+export default Home
+</code></pre></div><p>3.连接成功</p> <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0fb7a094035a4e988feabd5801a42f3c~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1215&amp;h=204&amp;s=18976&amp;e=png&amp;b=fcfcfc" alt="img.png" referrerpolicy="no-referrer"> <h3 id="封装接口"><a href="#封装接口" class="header-anchor">#</a> 封装接口</h3> <p>测试成功后大家应该会发现一个问题，每次编写接口方法都要引入<code>axios</code>封装文件，然后一步一步地编写方法，显得十分麻烦。所以接下来我们就要对所有的接口进行封装（参考上面的接口文档）。我们用一个对象管理模块对应的 api 方法然后导出，使用的时候在组件中导入<code>import Api from '...'</code>，通过<code>Api.xxModule.add()</code>调用接口方法即可，代码示例：</p> <div class="language- extra-class"><pre class="language-text"><code>// xxApi.js
+const apiMap={
+  xxModule:{
+    add:xxaddFunc()
+    get:xxGetFunc()
+  }
+  xxModule:{}
+}
+export default apiMap
+xxaddFunc(){}
+xxGetFunc(){}
+​
+// xx.jsx
+import Api from '...'
+...
+const add=()=&gt;{
+  const res=await Api.xxModule.add()
+  console.log(res)
+}
+</code></pre></div><p>然后我们以用户模块的封装为例，总共分为三个模块：登录模块、用户模块和用户中心模块，然后编写对应的接口方法再导出即可。</p> <p><strong>src/api/user/index.js</strong></p> <div class="language- extra-class"><pre class="language-text"><code>// 导入axios实例
+import request from '@/utils/request'
+// 导入获取refreshToken的方法
+import { getRefreshToken } from '@/utils/auth'
+const apiMap = {
+  // 登录
+  login: {
+    get: getCheckCode,
+    login: userLogin,
+    refresh: refreshToken
+  },
+  // 用户管理
+  manage: {
+    add: addUser,
+    update: updateUser,
+    del: delUser,
+    query: listUser,
+    queryById: getUserById,
+    reset: updatePwd // 重置密码
+  },
+  // 用户中心
+  center: {
+    get: getUserInfo,
+    update: updateUserInfo
+  }
+}
+export default apiMap
+​
+// 获取图形验证码
+function getCheckCode(uuid) {
+  return request({
+    url: '/user/checkCode?uuid=' + uuid,
+    method: 'get'
+  })
+}
+// 刷新过期token
+function refreshToken() {
+  ...
+}
+// 添加用户登录请求
+function userLogin(form) {
+  ...
+}
+// 获取用户列表
+function listUser(params) {
+ ...
+}
+...
+</code></pre></div><p>最后我们修改下上面 Home 组件写的获取验证码的方法</p> <p><strong>src/pages/Home/index.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import React, { useEffect } from 'react'
+import userApi from '@/api/user'
+const Home = () =&gt; {
+  useEffect(() =&gt; {
+    const fetchCode = async () =&gt; {
+      const code = await userApi.login.get()
+      console.log(code)
+    }
+    fetchCode()
+  }, [])
+  return &lt;div&gt;Home&lt;/div&gt;
+}
+export default Home
+</code></pre></div><p>也能正常响应</p> <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7df399adec1242099f670e455ea7dd09~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=816&amp;h=75&amp;s=15347&amp;e=png&amp;b=f8f7f7" alt="img.png" referrerpolicy="no-referrer"> <h2 id="代码"><a href="#代码" class="header-anchor">#</a> 代码</h2> <p>上述实现的代码都放在<a href="https://github.com/Alan-222/react-antd5-admin" target="_blank" rel="noopener noreferrer">react-antd5-admin<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，大家可自行查阅</p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/vuepress-blog/blogs/从零实现一个React+Antd5.0后台管理系统-Redux状态管理.html" class="prev">
+          从零实现一个React+Antd5.0后台管理系统-Redux状态管理
+        </a></span> <span class="next"><a href="/vuepress-blog/blogs/从零实现一个React+Antd5.0后台管理系统-Redux异步操作与Axios刷新token.html">
+          从零实现一个React+Antd5.0后台管理系统-Redux异步操作与Axios刷新token
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85.html#前言" class="sidebar-link reco-side-前言" data-v-b57cc07c>前言</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85.html#http-请求工具-axios-封装" class="sidebar-link reco-side-http-请求工具-axios-封装" data-v-b57cc07c>Http 请求工具 axios 封装</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85.html#介绍" class="sidebar-link reco-side-介绍" data-v-b57cc07c>介绍</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85.html#安装-axios-与-antd" class="sidebar-link reco-side-安装-axios-与-antd" data-v-b57cc07c>安装 axios 与 antd</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85.html#封装-axios" class="sidebar-link reco-side-封装-axios" data-v-b57cc07c>封装 axios</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85.html#设置拦截器" class="sidebar-link reco-side-设置拦截器" data-v-b57cc07c>设置拦截器</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85.html#测试接口服务" class="sidebar-link reco-side-测试接口服务" data-v-b57cc07c>测试接口服务</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85.html#所需准备" class="sidebar-link reco-side-所需准备" data-v-b57cc07c>所需准备</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85.html#后端服务及接口文档" class="sidebar-link reco-side-后端服务及接口文档" data-v-b57cc07c>后端服务及接口文档</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85.html#前端跨域配置" class="sidebar-link reco-side-前端跨域配置" data-v-b57cc07c>前端跨域配置</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85.html#测试接口" class="sidebar-link reco-side-测试接口" data-v-b57cc07c>测试接口</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85.html#封装接口" class="sidebar-link reco-side-封装接口" data-v-b57cc07c>封装接口</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85.html#代码" class="sidebar-link reco-side-代码" data-v-b57cc07c>代码</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/vuepress-blog/assets/js/app.4d1def3f.js" defer></script><script src="/vuepress-blog/assets/js/3.7d50d3e1.js" defer></script><script src="/vuepress-blog/assets/js/1.6ae6daff.js" defer></script><script src="/vuepress-blog/assets/js/80.b8683be3.js" defer></script>
+  </body>
+</html>

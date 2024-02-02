@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>从零实现一个React+Antd5.0后台管理系统-系统管理模块实现 | 龙二的博客</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="不要因为别人都在交卷自己就乱写答案">
+    
+    <link rel="preload" href="/vuepress-blog/assets/css/0.styles.a146971e.css" as="style"><link rel="preload" href="/vuepress-blog/assets/js/app.4d1def3f.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/3.7d50d3e1.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/1.6ae6daff.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/84.82978ff2.js" as="script"><link rel="prefetch" href="/vuepress-blog/assets/js/10.a0094eb9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/11.8cc30e4d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/12.a3b3d038.js"><link rel="prefetch" href="/vuepress-blog/assets/js/13.a651855d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/14.7ed1ec91.js"><link rel="prefetch" href="/vuepress-blog/assets/js/15.023cd03c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/16.9ef7ac5e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/17.422ad17c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/18.a6e180bf.js"><link rel="prefetch" href="/vuepress-blog/assets/js/19.6ce1b2b0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/20.9aadbc90.js"><link rel="prefetch" href="/vuepress-blog/assets/js/21.17c3096b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/22.313dd9d1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/23.4b2555ca.js"><link rel="prefetch" href="/vuepress-blog/assets/js/24.942269f4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/25.d5f20286.js"><link rel="prefetch" href="/vuepress-blog/assets/js/26.9a829b24.js"><link rel="prefetch" href="/vuepress-blog/assets/js/27.d7f30161.js"><link rel="prefetch" href="/vuepress-blog/assets/js/28.24ce6804.js"><link rel="prefetch" href="/vuepress-blog/assets/js/29.e5f055c1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/30.1ba01103.js"><link rel="prefetch" href="/vuepress-blog/assets/js/31.3d990e36.js"><link rel="prefetch" href="/vuepress-blog/assets/js/32.bb714c7d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/33.91a0a990.js"><link rel="prefetch" href="/vuepress-blog/assets/js/34.6579c3f9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/35.27946a52.js"><link rel="prefetch" href="/vuepress-blog/assets/js/36.bf946ff3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/37.9efda974.js"><link rel="prefetch" href="/vuepress-blog/assets/js/38.2e89b085.js"><link rel="prefetch" href="/vuepress-blog/assets/js/39.a2c4046e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/4.76e26aa1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/40.e78e5bb4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/41.44229177.js"><link rel="prefetch" href="/vuepress-blog/assets/js/42.87ad822a.js"><link rel="prefetch" href="/vuepress-blog/assets/js/43.5a0a040e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/44.52849bbd.js"><link rel="prefetch" href="/vuepress-blog/assets/js/45.39a7578a.js"><link rel="prefetch" href="/vuepress-blog/assets/js/46.524bb8f0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/47.7ed73f35.js"><link rel="prefetch" href="/vuepress-blog/assets/js/48.8b86acf1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/49.5336fb9f.js"><link rel="prefetch" href="/vuepress-blog/assets/js/5.7576fc30.js"><link rel="prefetch" href="/vuepress-blog/assets/js/50.4e1f73ad.js"><link rel="prefetch" href="/vuepress-blog/assets/js/51.f2ffcee1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/52.f144a0bb.js"><link rel="prefetch" href="/vuepress-blog/assets/js/53.856ca109.js"><link rel="prefetch" href="/vuepress-blog/assets/js/54.8783a9b1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/55.230b5306.js"><link rel="prefetch" href="/vuepress-blog/assets/js/56.ac605fa3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/57.f1d2bcef.js"><link rel="prefetch" href="/vuepress-blog/assets/js/58.93d1b1c3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/59.273ec851.js"><link rel="prefetch" href="/vuepress-blog/assets/js/6.32f1aaf4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/60.d4707dc9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/61.bcea3999.js"><link rel="prefetch" href="/vuepress-blog/assets/js/62.64837723.js"><link rel="prefetch" href="/vuepress-blog/assets/js/63.2db0caf0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/64.0ca7fd83.js"><link rel="prefetch" href="/vuepress-blog/assets/js/65.028a9dfa.js"><link rel="prefetch" href="/vuepress-blog/assets/js/66.eaa80467.js"><link rel="prefetch" href="/vuepress-blog/assets/js/67.0ff1370e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/68.bc893b77.js"><link rel="prefetch" href="/vuepress-blog/assets/js/69.a22929ab.js"><link rel="prefetch" href="/vuepress-blog/assets/js/7.385ed0df.js"><link rel="prefetch" href="/vuepress-blog/assets/js/70.371b7054.js"><link rel="prefetch" href="/vuepress-blog/assets/js/71.a01ce528.js"><link rel="prefetch" href="/vuepress-blog/assets/js/72.1b0cd0f5.js"><link rel="prefetch" href="/vuepress-blog/assets/js/73.4514ed93.js"><link rel="prefetch" href="/vuepress-blog/assets/js/74.188aaa3b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/75.594b462c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/76.b8a12591.js"><link rel="prefetch" href="/vuepress-blog/assets/js/77.ee8dae13.js"><link rel="prefetch" href="/vuepress-blog/assets/js/78.921e11a2.js"><link rel="prefetch" href="/vuepress-blog/assets/js/79.15260a1b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/8.f0575d67.js"><link rel="prefetch" href="/vuepress-blog/assets/js/80.b8683be3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/81.97f0bad0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/82.fca1fb9c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/83.465cd15c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/85.c19f75b5.js"><link rel="prefetch" href="/vuepress-blog/assets/js/86.9dcbfcae.js"><link rel="prefetch" href="/vuepress-blog/assets/js/87.a3f8e943.js"><link rel="prefetch" href="/vuepress-blog/assets/js/9.b0835361.js">
+    <link rel="stylesheet" href="/vuepress-blog/assets/css/0.styles.a146971e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>龙二的博客</h3> <p class="description" data-v-59e6cb88>不要因为别人都在交卷自己就乱写答案</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>龙二</span>
+          
+        <!---->
+        2024
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepress-blog/" class="home-link router-link-active"><img src="/vuepress-blog/龙二.jpg" alt="龙二的博客" class="logo"> <span class="site-name">龙二的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepress-blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/CSS学习笔记/" class="nav-link"><i class="undefined"></i>
+  CSS学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/《ES6入门教程》学习笔记/" class="nav-link"><i class="undefined"></i>
+  《ES6入门教程》学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/Vue学习笔记/" class="nav-link"><i class="undefined"></i>
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/vue3+ts+node.js后台管理系统/" class="nav-link"><i class="undefined"></i>
+  vue3+ts+node.js后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/从零实现一个React+Antd5.0后台管理系统/" class="nav-link"><i class="undefined"></i>
+  从零实现一个React+Antd5.0后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/javaScript学习笔记/" class="nav-link"><i class="undefined"></i>
+  javaScript学习笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      我的
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/4385276223300142" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/Alan-222" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/vuepress-blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    龙二
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>77</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>11</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/vuepress-blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/CSS学习笔记/" class="nav-link"><i class="undefined"></i>
+  CSS学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/《ES6入门教程》学习笔记/" class="nav-link"><i class="undefined"></i>
+  《ES6入门教程》学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/Vue学习笔记/" class="nav-link"><i class="undefined"></i>
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/vue3+ts+node.js后台管理系统/" class="nav-link"><i class="undefined"></i>
+  vue3+ts+node.js后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/从零实现一个React+Antd5.0后台管理系统/" class="nav-link"><i class="undefined"></i>
+  从零实现一个React+Antd5.0后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/javaScript学习笔记/" class="nav-link"><i class="undefined"></i>
+  javaScript学习笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      我的
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/4385276223300142" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/Alan-222" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/vuepress-blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>从零实现一个React+Antd5.0后台管理系统-系统管理模块实现</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>龙二</span>
+          
+        <!---->
+        2024
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">从零实现一个React+Antd5.0后台管理系统-系统管理模块实现</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>龙二</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2023/11/23</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>React</span><span class="tag-item" data-v-8a445198>Ant Design</span><span class="tag-item" data-v-8a445198>Redux</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>封装完页面通用模块后，现在我们正式进入页面的构建。搜索栏、按钮栏和表格就不再多做赘述了，都大同小异只是传入参数不同。我们主要来讲按钮的功能。可以分为以下两类</p> <ul><li>弹窗表单类：通用的新增、编辑，还有特定的重置用户密码、分配角色权限等</li> <li>确认弹框类：删除</li></ul> <h2 id="用户管理"><a href="#用户管理" class="header-anchor">#</a> 用户管理</h2> <p>现在主要把三个模块的按钮功能都完善下</p> <h3 id="搜索栏按钮"><a href="#搜索栏按钮" class="header-anchor">#</a> 搜索栏按钮</h3> <p>之前搜索栏组件中父组件传递了一个<code>getSearchParams</code>的函数获取搜索参数，如下：</p> <div class="language- extra-class"><pre class="language-text"><code>// 搜索事件
+const onFinish = (values) =&gt; {
+ getSearchParams(values)
+}
+// 重置事件
+const onReset = () =&gt; {
+ form.resetFields()
+ getSearchParams({})
+}
+</code></pre></div><h4 id="搜索参数修改"><a href="#搜索参数修改" class="header-anchor">#</a> 搜索参数修改</h4> <p>由于表格进行了封装，我们在父组件中传递的事件及参数要修改下。<code>searchParams</code>参数弃用，统一用传给表格的<code>requestParam</code>参数</p> <p><strong>src/pages/System/User/index.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>​
+// 请求参数重置、修改
+const onParamChange = (searchParams) =&gt; {
+if (!Object.keys(searchParams).length)
+  setRequestParam({
+    ...requestParam,
+    username: undefined,
+    nickname: undefined,
+    email: undefined,
+    status: undefined
+  })
+else setRequestParam({ ...requestParam, ...searchParams })
+}
+​
+return(
+  &lt;&gt;
+    &lt;SearchBar formItemList={formItemList} getSearchParams={onParamChange} /&gt;
+  &lt;/&gt;
+)
+</code></pre></div><p>这样就能正常进行搜索与重置的操作</p> <h3 id="按钮栏按钮与表格操作列按钮"><a href="#按钮栏按钮与表格操作列按钮" class="header-anchor">#</a> 按钮栏按钮与表格操作列按钮</h3> <p>按钮栏目前只有新增、批量删除两个按钮，大家有需要的话可自行扩展。</p> <p>表格操作列有编辑、删除、重置密码按钮，主要是针对表格当前行的数据进行操作。</p> <h4 id="新增、编辑、重置密码"><a href="#新增、编辑、重置密码" class="header-anchor">#</a> 新增、编辑、重置密码</h4> <p>这部分功能的话还是采用类似个人中心的弹窗+表单的模式。我们先完成表单组件。</p> <p>我们先来梳理一下各个按钮功能需要的表单项</p> <ul><li>新增：用户名、角色、状态、密码、确认密码</li> <li>编辑：用户名、角色、状态</li> <li>重置密码：旧密码、密码、确认密码</li></ul> <p>为了区分功能，需要在父组件传入<code>editType</code>字段指明功能类型，例如新增：add。编辑、重置密码时还需传入操作的用户 id。现在我们来梳理一下表单组件需要的字段。</p> <table><thead><tr><th>传入字段</th> <th>是否必填</th> <th>字段名称</th> <th>类型</th> <th>字段说明</th></tr></thead> <tbody><tr><td><code>editType</code></td> <td>必填</td> <td>编辑类型</td> <td>String</td> <td>表示当前弹窗功能</td></tr> <tr><td><code>user_id</code></td> <td>选填</td> <td>用户 ID</td> <td>String</td> <td>编辑、重置唯一标识</td></tr> <tr><td><code>dict</code></td> <td>选填</td> <td>字典</td> <td>Object</td> <td>表单所用到的所有字典值</td></tr> <tr><td><code>onRefreshTable</code></td> <td>必填</td> <td>表格刷新事件</td> <td>Function</td> <td>使父组件表格刷新</td></tr> <tr><td><code>toggleModalStatus</code></td> <td>必填</td> <td>弹窗关闭事件</td> <td>Function</td> <td>使外层弹窗关闭</td></tr></tbody></table> <p>然后就可以根据传入的<code>editType</code>显示对应的表单项，部分表单项如下图。</p> <p><strong>src/pages/System/User/components/UserEditForm.jsx</strong></p> <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/638a2954ef354f9b96b0f6263b7d6cc3~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1321&amp;h=822&amp;s=115908&amp;e=png&amp;b=282c34" alt="img.png" referrerpolicy="no-referrer"> <h5 id="获取表单项数据和编辑回显值"><a href="#获取表单项数据和编辑回显值" class="header-anchor">#</a> 获取表单项数据和编辑回显值</h5> <p>那么当我们下拉框或者单选框组需要数据时，还有编辑时需要回显值时，就需要在<code>useEffect</code>钩子函数中进行。注意依赖项是<code>editType</code>和<code>user_id</code>，即当编辑类型和用户 id 改变时重新请求。</p> <div class="language- extra-class"><pre class="language-text"><code>  // 表单数据
+  const [allRoleArr, setAllRoleArr] = useState([])
+  useEffect(() =&gt; {
+    // 进来先重置表单
+    form &amp;&amp; form.resetFields()
+    // 请求角色选项数组
+    if (editType !== 'reset' &amp;&amp; !allRoleArr.length) {
+      const fetchAllRole = async () =&gt; {
+        const { data } = await roleApi.manage.queryAll()
+        const filterArr = data.map((item) =&gt; ({ role_id: item.role_id, role_name: item.role_name }))
+        setAllRoleArr(filterArr)
+      }
+      fetchAllRole()
+    }
+    // 请求当前用户id的信息
+    if (editType === 'edit') {
+      const fetchCurrentData = async () =&gt; {
+        const {
+          data: { username, roles, status }
+        } = await userApi.manage.queryById(user_id)
+        // 回显值
+        form.setFieldsValue({
+          username,
+          role_ids: roles.map((item) =&gt; item.role_id),
+          status
+        })
+      }
+      fetchCurrentData()
+    }
+  }, [editType, user_id])
+</code></pre></div><h5 id="取消、提交按钮事件"><a href="#取消、提交按钮事件" class="header-anchor">#</a> 取消、提交按钮事件</h5> <p>取消按钮就是关闭弹窗，调用一下父组件传递的弹窗关闭事件即可。提交按钮需要根据编辑类型，请求对应的接口，然后当非重置密码时需要刷新一下父组件表格（传入的刷新方法<code>onRefreshTable</code>，这里设置传入空对象即为重置表格，即将搜索数据置空）。</p> <div class="language- extra-class"><pre class="language-text"><code>// 取消按钮事件
+const onCancel = () =&gt; {
+  toggleModalStatus(false)
+}
+// 提交按钮事件
+const onFinish = async (value) =&gt; {
+// 根据不同类型编辑类型，请求不同接口
+  switch (editType) {
+    case 'add':
+      await userApi.manage.add(value)
+      message.success('添加用户成功')
+      break
+    case 'edit':
+      await userApi.manage.update({ user_id, ...value })
+      message.success('修改信息成功')
+      break
+    case 'reset':
+      await userApi.manage.reset({ user_id, ...value })
+      message.success('重置密码成功')
+      break
+    default:
+      console.log(editType)
+  }
+  onCancel()
+  // 刷新表格
+  if (editType !== 'reset') onRefreshTable({})
+}
+</code></pre></div><p>然后父组件中用自定义弹窗组件包裹上述组件传入对应参数。新增时重新赋值为 add 并将 user_id 置为空，点击编辑按钮时重新赋值编辑类型为<code>edit</code>和 user_id 为当前行用户 id，重置密码与编辑类似。</p> <p><strong>src/pages/System/User/index.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>    // 功能类型
+  const [editType, setEditType] = useState()
+  // 当前行用户id
+  const [user_id, setUserId] = useState()
+  // 添加用户
+  const addRow = () =&gt; {
+    setEditType('add')
+    setUserId('')
+    toggleModalStatus(true)
+  }
+  // 弹窗显隐切换
+  const toggleModalStatus = (status) =&gt; {
+    userModalRef.current.toggleShowStatus(status)
+  }
+  ...
+  &lt;CustomModal title=&quot;用户编辑&quot; ref={userModalRef}&gt;
+    &lt;UserEditForm
+      editType={editType}
+      user_id={user_id}
+      dict={{ statusDict }}
+      onRefreshTable={onParamChange}
+      toggleModalStatus={toggleModalStatus}
+    /&gt;
+  &lt;/CustomModal&gt;
+</code></pre></div><h4 id="批量删除"><a href="#批量删除" class="header-anchor">#</a> 批量删除</h4> <p>批量删除是按钮栏的按钮，一般是表格每行左侧有个复选框，有勾选时出现此按钮。在表格选择的配置项为<code>rowSelection</code>，里面有个<code>onChange</code>事件，我们用一个数组接收选择项，改变时重设数组即可。</p> <p><strong>src/pages/System/User/index.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>// 勾选的用户
+const [selectedRowKeys, setSelectedRowKeys] = useState()
+// 选择用户
+const rowSelection = {
+  onChange: (selectedRowKeys) =&gt; {
+    setSelectedRowKeys(selectedRowKeys)
+}
+}
+&lt;CustomTable
+  rowSelection={{
+    type: 'checkbox',
+    ...rowSelection
+  }}
+  ...
+/&gt;
+</code></pre></div><h5 id="批量删除按钮显示逻辑"><a href="#批量删除按钮显示逻辑" class="header-anchor">#</a> 批量删除按钮显示逻辑</h5> <div class="language- extra-class"><pre class="language-text"><code>{selectedRowKeys &amp;&amp; selectedRowKeys.length &gt; 0 &amp;&amp; (
+&lt;Popconfirm title=&quot;删除用户&quot; description=&quot;确定要删除吗？&quot; onConfirm={() =&gt; deleteRow(selectedRowKeys)}&gt;
+  &lt;AuthComponent permission=&quot;system:user:del&quot; danger&gt;
+    批量删除
+  &lt;/AuthComponent&gt;
+&lt;/Popconfirm&gt;
+)}
+</code></pre></div><h5 id="删除方法"><a href="#删除方法" class="header-anchor">#</a> 删除方法</h5> <p>删除方法和表格操作列删除按钮共用一个。表格删除时为字符串类型，批量删除时为数组类型</p> <div class="language- extra-class"><pre class="language-text"><code>  // 删除
+const deleteRow = async (user_ids) =&gt; {
+  await userApi.manage.del({ user_ids: user_ids })
+  message.success('删除成功')
+  // 重新请求表格
+  onParamChange({})
+}
+</code></pre></div><h3 id="最终效果"><a href="#最终效果" class="header-anchor">#</a> 最终效果</h3> <p><strong>用户管理页面</strong></p> <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/210de0aa34f94b2c8c8b017b03c0b086~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2559&amp;h=1206&amp;s=84505&amp;e=png&amp;b=fafafa" alt="img.png" referrerpolicy="no-referrer"> <p><strong>用户管理新增功能</strong></p> <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ff26ff228b984341b0a7e2e85b0aa220~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2559&amp;h=1206&amp;s=90614&amp;e=png&amp;b=898989" alt="img.png" referrerpolicy="no-referrer"> <h2 id="角色管理"><a href="#角色管理" class="header-anchor">#</a> 角色管理</h2> <p>角色管理总体与用户管理类似，表格操作列多了一个<strong>分配权限</strong>的按钮，我们先完成基本的三个模块及新增、编辑、删除按钮。</p> <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/916705d5ba60457e9e9dfe3c1755aa63~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2559&amp;h=1206&amp;s=119225&amp;e=png&amp;b=898989" alt="img.png" referrerpolicy="no-referrer"> <p>然后我们着手完成<strong>分配权限</strong>的功能。</p> <h3 id="分配权限"><a href="#分配权限" class="header-anchor">#</a> 分配权限</h3> <p>分配权限是弹窗加弹窗内部组件。弹窗内部组件主要由树形控件<code>Tree</code>构成，我们先罗列一下我们需要用到的 Tree`控件的属性。</p> <table><thead><tr><th>属性</th> <th>属性类型</th> <th>属性说明</th></tr></thead> <tbody><tr><td><code>checkable</code></td> <td>boolean</td> <td>节点前添加 Checkbox 复选框</td></tr> <tr><td><code>defaultExpandAll</code></td> <td>boolean</td> <td>默认展开所有树节点</td></tr> <tr><td><code>checkStrictly</code></td> <td>boolean</td> <td>checkable 状态下节点选择完全受控（父子节点选中状态不再关联）</td></tr> <tr><td><code>treeData</code></td> <td>array&lt;{key, title, children, [disabled, selectable]}&gt;</td> <td>treeNodes 数据，如果设置则不需要手动构造 TreeNode 节点（key 在整个树范围内唯一）</td></tr> <tr><td><code>checkedKeys</code></td> <td>string[]</td> <td>{checked: string[], halfChecked: string[]}</td></tr> <tr><td><code>onCheck</code></td> <td>function(checkedKeys, e:{checked: boolean, checkedNodes, node, event, halfCheckedKeys})</td> <td>点击复选框触发</td></tr></tbody></table> <p>然后我们开始封装弹窗内部组件<code>RoleAuthTree</code>。</p> <p>步骤有三步</p> <p>1.获取所有权限列表，并将其数据结构转换为<code>array&lt;{key, title, children}&gt;</code>类型（这里后端接口直接返回的就是这个格式，无需转换）</p> <p><strong>src\pages\System\Role\components\RoleAuthTree.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import authApi from '@/api/auth'
+const RoleAuthTree = () =&gt; {
+ // 权限树的数据
+  const [treeData, setTreeData] = useState([])
+  // 勾选的复选框数组
+  const [checkedKeys, setCheckedKeys] = useState([])
+  // 勾选复选框回调
+  const onCheck = (checkedKeysValue) =&gt; {
+    setCheckedKeys(checkedKeysValue)
+  }
+​
+  const onCancel = () =&gt; {
+    setCheckedKeys({ checked: [], halfChecked: [] })
+    toggleAssignStatus(false)
+  }
+  
+  const onSubmit = async () =&gt; {
+    toggleAssignStatus(false)
+  }
+​
+  useEffect(() =&gt; {
+    const fetchAuthTree = async () =&gt; {
+      const { data } = await authApi.options.getAuth()
+      setTreeData(data)
+    }
+    fetchAuthTree()
+  }, [])
+  return (
+    &lt;&gt;
+      {treeData.length &gt; 0 &amp;&amp; (
+        &lt;Tree
+          checkable
+          defaultExpandAll={true}
+          onCheck={onCheck}
+          checkedKeys={checkedKeys}
+          checkStrictly
+          treeData={treeData}
+        /&gt;
+      )}
+      &lt;div style={{ textAlign: 'center' }}&gt;
+        &lt;Button onClick={onCancel}&gt;取消&lt;/Button&gt;
+        &lt;Button type=&quot;primary&quot; style={{ marginLeft: 32 }} onClick={onSubmit}&gt;
+          确认
+        &lt;/Button&gt;
+      &lt;/div&gt;
+    &lt;/&gt;
+  )
+}
+export default RoleAuthTree
+</code></pre></div><p>2.获取当前角色所拥有权限数据的数组，这个我们在父组件请求接口获取后传进来</p> <p><strong>src\pages\System\Role\index.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>...
+// 表格列配置
+const columns = [
+      {
+      title: '操作',
+      key: 'action',
+      render: (text, row) =&gt; (
+        &lt;Space
+          style={{
+            cursor: 'pointer',
+            color: '#2378f7',
+            fontSize: '15px'
+          }}&gt;
+          ...
+          &lt;span onClick={() =&gt; assignRoleAuth(row.role_id)}&gt;
+            &lt;AuthComponent permission=&quot;system:role:assignAuth&quot; title=&quot;分配权限&quot;&gt;
+              分配权限
+            &lt;/AuthComponent&gt;
+          &lt;/span&gt;
+        &lt;/Space&gt;
+      ),
+      align: 'center'
+    }
+]
+/** 分配角色权限 */
+  const [assignRoleId, setAssignRoleId] = useState()
+  const roleAuthRef = useRef()
+  // 当前行角色权限数据
+  const [roleAuths, setRoleAuths] = useState([])
+  const toggleAssignStatus = (status) =&gt; {
+    roleAuthRef.current.toggleShowStatus(status)
+  }
+  const assignRoleAuth = async (role_id) =&gt; {
+   // 获取该角色id的权限数据
+    const { data } = await roleApi.resource.getRes(role_id)
+    setAssignRoleId(role_id)
+    setRoleAuths(data)
+    toggleAssignStatus(true)
+  }
+  &lt;CustomModal title=&quot;分配角色权限&quot; ref={roleAuthRef}&gt;
+    &lt;RoleAuthTree
+      role_id={assignRoleId}
+      roleAuths={roleAuths}
+      toggleAssignStatus={toggleAssignStatus}&gt;&lt;/RoleAuthTree&gt;
+  &lt;/CustomModal&gt;
+</code></pre></div><p><strong>src\pages\System\Role\components\RoleAuthTree.jsx</strong></p> <div class="language- extra-class"><pre class="language-text"><code>const RoleAuthTree = ({ role_id, roleAuths, toggleAssignStatus }) =&gt; {
+  const fetchAuthTree = async () =&gt; {
+    const { data } = await authApi.options.getAuth()
+    setTreeData(data)
+    // 设置勾选复选框为传入角色权限数据
+    setCheckedKeys((checkedKeys) =&gt; ({ ...checkedKeys, checked: roleAuths }))
+  }
+}
+</code></pre></div><p>3.勾选完复选框提交数据，也是请求接口提交当前已勾选角色的权限数据</p> <div class="language- extra-class"><pre class="language-text"><code> const onSubmit = async () =&gt; {
+   await roleApi.resource.updRes(role_id, { all_ids: checkedKeys.checked })
+   message.success('分配角色权限成功')
+   toggleAssignStatus(false)
+ }
+</code></pre></div><h3 id="最终效果-2"><a href="#最终效果-2" class="header-anchor">#</a> 最终效果</h3> <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6f87db6badf14173895b977bf79da458~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2559&amp;h=1206&amp;s=123292&amp;e=png&amp;b=898989" alt="img.png" referrerpolicy="no-referrer"> <h2 id="权限管理"><a href="#权限管理" class="header-anchor">#</a> 权限管理</h2> <p>权限管理页面由于要展示菜单+按钮，所以需要层级嵌套的组件结构，在<code>antd</code>中树形表格可以实现。由于不需要分页，我们直接用<code>antd</code>的<code>Table</code>组件。</p> <h4 id="树形表格"><a href="#树形表格" class="header-anchor">#</a> 树形表格</h4> <p>Table 组件的<code>dataSource</code>属性只要数据中有<code>children</code>字段会自动展示为树形表格</p> <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b47c7d80da8c4408871f924191611cf6~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1510&amp;h=226&amp;s=28647&amp;e=png&amp;b=fefefe" alt="img.png" referrerpolicy="no-referrer"> <p>我们只需要传给<code>Table</code>组件的<code>dataSource</code>如下图所示的数据</p> <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ec04ee5a624d4491be86e71f874bfa18~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=669&amp;h=753&amp;s=62000&amp;e=png&amp;b=fefefe" alt="img.png" referrerpolicy="no-referrer"> <p>展示效果如下</p> <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/000cfc4f13fe4c7f8210846da589a97f~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2559&amp;h=1206&amp;s=116429&amp;e=png&amp;b=fdfdfd" alt="img.png" referrerpolicy="no-referrer"> <h4 id="表单编辑"><a href="#表单编辑" class="header-anchor">#</a> 表单编辑</h4> <p>表单编辑按照不同的类别会展示不同的表单项让用户填写</p> <ul><li>共有：父级菜单（下拉框）、权限名称、权限类型（目录、菜单、按钮）、排序、状态（显示、隐藏）</li> <li>目录类型：路由路径（即 React Router 的 path 字段）、图标（自定义选择<code>svg</code>图标组件）、重定向路径（访问路径时重定向哪个子路由）</li> <li>菜单类型：路由路径（即 React Router 的 path 字段）、图标（自定义选择<code>svg</code>图标组件）、组件路径（组件在项目文件夹中的路径）</li> <li>按钮类型：权限标识（按钮的唯一标识）</li></ul> <p>然后我们封装一下选择图标的组件</p> <h5 id="封装选择图标组件"><a href="#封装选择图标组件" class="header-anchor">#</a> 封装选择图标组件</h5> <p>之前我们已经封装过<code>SvgIcon</code>组件，如下图</p> <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0bfd8e1a8dc34323bd31474ac684508e~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=946&amp;h=214&amp;s=31042&amp;e=png&amp;b=282c34" alt="img.png" referrerpolicy="no-referrer"> <p>现在图标已经全部引入，并挂载到<code>body</code>上了。我们现在只需要传入图中<code>name</code>就能显示不同的<code>svg</code>图标。那么我们只要获取所有的<code>svg</code>图标名称，<strong>存在数组里并且遍历渲染</strong>出来不就有<code>svg</code>图标列表，再添加一下选择事件就可以了。</p> <p>之前其实已经给大家提供了这个方法</p> <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/47437bd5f0cf441e9c7679648d09d028~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1059&amp;h=570&amp;s=114367&amp;e=png&amp;b=282c34" alt="img.png" referrerpolicy="no-referrer"> <p>就是全量导入<code>svg</code>图标后，按正则表达式去匹配就可以得到<code>['404','bug'...]</code>这样的图标名称列表。</p> <p>然后我们在选择图标组件中导入这个方法调用赋值给一个变量，这个变量就是图标数组，我们遍历展示即可。</p> <p><strong>src/components/IconSelect/index.jsx</strong></p> <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f04ed3cd022e4e0d861eb83e05656f7f~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1389&amp;h=817&amp;s=130208&amp;e=png&amp;b=282c34" alt="img.png" referrerpolicy="no-referrer"> <p>在<strong>表单编辑</strong>组件中使用</p> <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5343ac1846454a89b2b6167191d1b3e9~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1036&amp;h=774&amp;s=108128&amp;e=png&amp;b=282c34" alt="img.png" referrerpolicy="no-referrer"> <p>把上图的<code>iconSelectVDOM</code>放在表单项中即可</p> <h5 id="获取数据"><a href="#获取数据" class="header-anchor">#</a> 获取数据</h5> <p>从表格页进来新增、编辑有三种情况</p> <ul><li>直接点击按钮栏的新增（无 id），那么我们只要清空表单即可</li> <li>点击表格操作列的添加（有 id），那么我们除清空表单外，还要给父级菜单的下拉框回显当前 id 的值作为父级菜单</li> <li>表格操作列编辑（有 id），根据 id 请求接口获取信息回显值</li></ul> <p>父级下拉框的选项是<strong>树形结构</strong>，除了我们从接口获取的菜单数据，我们还应该在顶层添加一条作为<strong>顶层菜单</strong>：值为 0，children 配置再添加接口传递的菜单项数据。获取数据的代码如下图</p> <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1cf6285484c9455baa412dee2ca9e959~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1282&amp;h=837&amp;s=134918&amp;e=png&amp;b=282c34" alt="img.png" referrerpolicy="no-referrer"> <p>这里我们系统管理模块就结束了。</p> <h2 id="代码"><a href="#代码" class="header-anchor">#</a> 代码</h2> <p>上述实现的代码都放在<a href="https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FAlan-222%2Freact-antd5-admin" title="https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FAlan-222%2Freact-antd5-admin" target="_blank" rel="noopener noreferrer">react-antd5-admin<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，大家可自行查阅</p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/vuepress-blog/blogs/从零实现一个React+Antd5.0后台管理系统-管理页面通用模块实现.html" class="prev">
+          从零实现一个React+Antd5.0后台管理系统-管理页面通用模块实现
+        </a></span> <span class="next"><a href="/vuepress-blog/blogs/从零实现一个React+Antd5.0后台管理系统-多页签及面包屑实现.html">
+          从零实现一个React+Antd5.0后台管理系统-多页签及面包屑实现
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#前言" class="sidebar-link reco-side-前言" data-v-b57cc07c>前言</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#用户管理" class="sidebar-link reco-side-用户管理" data-v-b57cc07c>用户管理</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#搜索栏按钮" class="sidebar-link reco-side-搜索栏按钮" data-v-b57cc07c>搜索栏按钮</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#搜索参数修改" class="sidebar-link reco-side-搜索参数修改" data-v-b57cc07c>搜索参数修改</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#按钮栏按钮与表格操作列按钮" class="sidebar-link reco-side-按钮栏按钮与表格操作列按钮" data-v-b57cc07c>按钮栏按钮与表格操作列按钮</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#新增、编辑、重置密码" class="sidebar-link reco-side-新增、编辑、重置密码" data-v-b57cc07c>新增、编辑、重置密码</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#批量删除" class="sidebar-link reco-side-批量删除" data-v-b57cc07c>批量删除</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#最终效果" class="sidebar-link reco-side-最终效果" data-v-b57cc07c>最终效果</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#角色管理" class="sidebar-link reco-side-角色管理" data-v-b57cc07c>角色管理</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#分配权限" class="sidebar-link reco-side-分配权限" data-v-b57cc07c>分配权限</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#最终效果-2" class="sidebar-link reco-side-最终效果-2" data-v-b57cc07c>最终效果</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#权限管理" class="sidebar-link reco-side-权限管理" data-v-b57cc07c>权限管理</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#树形表格" class="sidebar-link reco-side-树形表格" data-v-b57cc07c>树形表格</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#表单编辑" class="sidebar-link reco-side-表单编辑" data-v-b57cc07c>表单编辑</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0.html#代码" class="sidebar-link reco-side-代码" data-v-b57cc07c>代码</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/vuepress-blog/assets/js/app.4d1def3f.js" defer></script><script src="/vuepress-blog/assets/js/3.7d50d3e1.js" defer></script><script src="/vuepress-blog/assets/js/1.6ae6daff.js" defer></script><script src="/vuepress-blog/assets/js/84.82978ff2.js" defer></script>
+  </body>
+</html>

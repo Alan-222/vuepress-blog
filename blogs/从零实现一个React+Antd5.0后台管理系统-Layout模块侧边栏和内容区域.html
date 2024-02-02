@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>从零实现一个React+Antd5.0后台管理系统-Layout模块侧边栏和内容区域 | 龙二的博客</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="不要因为别人都在交卷自己就乱写答案">
+    
+    <link rel="preload" href="/vuepress-blog/assets/css/0.styles.a146971e.css" as="style"><link rel="preload" href="/vuepress-blog/assets/js/app.4d1def3f.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/3.7d50d3e1.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/1.6ae6daff.js" as="script"><link rel="preload" href="/vuepress-blog/assets/js/75.594b462c.js" as="script"><link rel="prefetch" href="/vuepress-blog/assets/js/10.a0094eb9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/11.8cc30e4d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/12.a3b3d038.js"><link rel="prefetch" href="/vuepress-blog/assets/js/13.a651855d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/14.7ed1ec91.js"><link rel="prefetch" href="/vuepress-blog/assets/js/15.023cd03c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/16.9ef7ac5e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/17.422ad17c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/18.a6e180bf.js"><link rel="prefetch" href="/vuepress-blog/assets/js/19.6ce1b2b0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/20.9aadbc90.js"><link rel="prefetch" href="/vuepress-blog/assets/js/21.17c3096b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/22.313dd9d1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/23.4b2555ca.js"><link rel="prefetch" href="/vuepress-blog/assets/js/24.942269f4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/25.d5f20286.js"><link rel="prefetch" href="/vuepress-blog/assets/js/26.9a829b24.js"><link rel="prefetch" href="/vuepress-blog/assets/js/27.d7f30161.js"><link rel="prefetch" href="/vuepress-blog/assets/js/28.24ce6804.js"><link rel="prefetch" href="/vuepress-blog/assets/js/29.e5f055c1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/30.1ba01103.js"><link rel="prefetch" href="/vuepress-blog/assets/js/31.3d990e36.js"><link rel="prefetch" href="/vuepress-blog/assets/js/32.bb714c7d.js"><link rel="prefetch" href="/vuepress-blog/assets/js/33.91a0a990.js"><link rel="prefetch" href="/vuepress-blog/assets/js/34.6579c3f9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/35.27946a52.js"><link rel="prefetch" href="/vuepress-blog/assets/js/36.bf946ff3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/37.9efda974.js"><link rel="prefetch" href="/vuepress-blog/assets/js/38.2e89b085.js"><link rel="prefetch" href="/vuepress-blog/assets/js/39.a2c4046e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/4.76e26aa1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/40.e78e5bb4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/41.44229177.js"><link rel="prefetch" href="/vuepress-blog/assets/js/42.87ad822a.js"><link rel="prefetch" href="/vuepress-blog/assets/js/43.5a0a040e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/44.52849bbd.js"><link rel="prefetch" href="/vuepress-blog/assets/js/45.39a7578a.js"><link rel="prefetch" href="/vuepress-blog/assets/js/46.524bb8f0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/47.7ed73f35.js"><link rel="prefetch" href="/vuepress-blog/assets/js/48.8b86acf1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/49.5336fb9f.js"><link rel="prefetch" href="/vuepress-blog/assets/js/5.7576fc30.js"><link rel="prefetch" href="/vuepress-blog/assets/js/50.4e1f73ad.js"><link rel="prefetch" href="/vuepress-blog/assets/js/51.f2ffcee1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/52.f144a0bb.js"><link rel="prefetch" href="/vuepress-blog/assets/js/53.856ca109.js"><link rel="prefetch" href="/vuepress-blog/assets/js/54.8783a9b1.js"><link rel="prefetch" href="/vuepress-blog/assets/js/55.230b5306.js"><link rel="prefetch" href="/vuepress-blog/assets/js/56.ac605fa3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/57.f1d2bcef.js"><link rel="prefetch" href="/vuepress-blog/assets/js/58.93d1b1c3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/59.273ec851.js"><link rel="prefetch" href="/vuepress-blog/assets/js/6.32f1aaf4.js"><link rel="prefetch" href="/vuepress-blog/assets/js/60.d4707dc9.js"><link rel="prefetch" href="/vuepress-blog/assets/js/61.bcea3999.js"><link rel="prefetch" href="/vuepress-blog/assets/js/62.64837723.js"><link rel="prefetch" href="/vuepress-blog/assets/js/63.2db0caf0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/64.0ca7fd83.js"><link rel="prefetch" href="/vuepress-blog/assets/js/65.028a9dfa.js"><link rel="prefetch" href="/vuepress-blog/assets/js/66.eaa80467.js"><link rel="prefetch" href="/vuepress-blog/assets/js/67.0ff1370e.js"><link rel="prefetch" href="/vuepress-blog/assets/js/68.bc893b77.js"><link rel="prefetch" href="/vuepress-blog/assets/js/69.a22929ab.js"><link rel="prefetch" href="/vuepress-blog/assets/js/7.385ed0df.js"><link rel="prefetch" href="/vuepress-blog/assets/js/70.371b7054.js"><link rel="prefetch" href="/vuepress-blog/assets/js/71.a01ce528.js"><link rel="prefetch" href="/vuepress-blog/assets/js/72.1b0cd0f5.js"><link rel="prefetch" href="/vuepress-blog/assets/js/73.4514ed93.js"><link rel="prefetch" href="/vuepress-blog/assets/js/74.188aaa3b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/76.b8a12591.js"><link rel="prefetch" href="/vuepress-blog/assets/js/77.ee8dae13.js"><link rel="prefetch" href="/vuepress-blog/assets/js/78.921e11a2.js"><link rel="prefetch" href="/vuepress-blog/assets/js/79.15260a1b.js"><link rel="prefetch" href="/vuepress-blog/assets/js/8.f0575d67.js"><link rel="prefetch" href="/vuepress-blog/assets/js/80.b8683be3.js"><link rel="prefetch" href="/vuepress-blog/assets/js/81.97f0bad0.js"><link rel="prefetch" href="/vuepress-blog/assets/js/82.fca1fb9c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/83.465cd15c.js"><link rel="prefetch" href="/vuepress-blog/assets/js/84.82978ff2.js"><link rel="prefetch" href="/vuepress-blog/assets/js/85.c19f75b5.js"><link rel="prefetch" href="/vuepress-blog/assets/js/86.9dcbfcae.js"><link rel="prefetch" href="/vuepress-blog/assets/js/87.a3f8e943.js"><link rel="prefetch" href="/vuepress-blog/assets/js/9.b0835361.js">
+    <link rel="stylesheet" href="/vuepress-blog/assets/css/0.styles.a146971e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>龙二的博客</h3> <p class="description" data-v-59e6cb88>不要因为别人都在交卷自己就乱写答案</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>龙二</span>
+          
+        <!---->
+        2024
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepress-blog/" class="home-link router-link-active"><img src="/vuepress-blog/龙二.jpg" alt="龙二的博客" class="logo"> <span class="site-name">龙二的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepress-blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/CSS学习笔记/" class="nav-link"><i class="undefined"></i>
+  CSS学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/《ES6入门教程》学习笔记/" class="nav-link"><i class="undefined"></i>
+  《ES6入门教程》学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/Vue学习笔记/" class="nav-link"><i class="undefined"></i>
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/vue3+ts+node.js后台管理系统/" class="nav-link"><i class="undefined"></i>
+  vue3+ts+node.js后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/从零实现一个React+Antd5.0后台管理系统/" class="nav-link"><i class="undefined"></i>
+  从零实现一个React+Antd5.0后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/javaScript学习笔记/" class="nav-link"><i class="undefined"></i>
+  javaScript学习笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      我的
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/4385276223300142" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/Alan-222" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/vuepress-blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <h3 class="name" data-v-1fad0c41>
+    龙二
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>77</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>11</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/vuepress-blog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/CSS学习笔记/" class="nav-link"><i class="undefined"></i>
+  CSS学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/《ES6入门教程》学习笔记/" class="nav-link"><i class="undefined"></i>
+  《ES6入门教程》学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/Vue学习笔记/" class="nav-link"><i class="undefined"></i>
+  Vue学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/vue3+ts+node.js后台管理系统/" class="nav-link"><i class="undefined"></i>
+  vue3+ts+node.js后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/从零实现一个React+Antd5.0后台管理系统/" class="nav-link"><i class="undefined"></i>
+  从零实现一个React+Antd5.0后台管理系统
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress-blog/categories/javaScript学习笔记/" class="nav-link"><i class="undefined"></i>
+  javaScript学习笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      我的
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/4385276223300142" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/Alan-222" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="/vuepress-blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>从零实现一个React+Antd5.0后台管理系统-Layout模块侧边栏和内容区域</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>龙二</span>
+          
+        <!---->
+        2024
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">从零实现一个React+Antd5.0后台管理系统-Layout模块侧边栏和内容区域</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>龙二</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2023/11/11</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>React</span><span class="tag-item" data-v-8a445198>Ant Design</span><span class="tag-item" data-v-8a445198>Redux</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>头部区域完成后，侧边栏区域主要就是展示菜单，之前我们存储了用户动态路由在全局状态中，我们在前面拼接上首页菜单然后还要转化为菜单项的格式。菜单项包含图标和标题，我们需要做对应的处理。内容区域根据当前菜单项展示 Layout 页面的子路由页面即可</p> <h2 id="layout-模块"><a href="#layout-模块" class="header-anchor">#</a> Layout 模块</h2> <h3 id="侧边栏区域"><a href="#侧边栏区域" class="header-anchor">#</a> 侧边栏区域</h3> <h4 id="实现-svg-图标组件"><a href="#实现-svg-图标组件" class="header-anchor">#</a> 实现 svg 图标组件</h4> <p>由于<code>Antd</code>的图标没法完全满足我的需求，所以菜单的图标我是自己封装了<code>svg</code>图标组件去实现的。</p> <h5 id="_1-安装-svg-插件"><a href="#_1-安装-svg-插件" class="header-anchor">#</a> 1.安装 svg 插件</h5> <div class="language- extra-class"><pre><code>npm install svg-sprite-loader svgo-loader --dev
+</code></pre></div><blockquote><p><code>svg-sprite-loader</code> 会把<code>SVG</code> 塞到一个个 <code>symbol</code> 中,合成一个大的 <code>SVG</code>。最后将这个<code>SVG</code>放入到 body 中，symbol 的<code>id</code>如果不特别指定，就是你的文件名。</p> <p><code>svgo-loader</code> 是基于 <code>SVG Optimizer</code> 的一个加载器,而 <code>SVG Optimizer</code> 是一个基于<code>node.js</code>的工具，用于优化<code>SVG</code>矢量图形文件，它可以删除和修改<code>SVG</code>元素，折叠内容，移动属性等</p></blockquote> <h5 id="_2-准备好-svg-文件"><a href="#_2-准备好-svg-文件" class="header-anchor">#</a> 2.准备好 svg 文件</h5> <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/abf7b9e37a454c828bdb4a19ef2a86dc~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=402&amp;h=513&amp;s=38805&amp;e=png&amp;b=23272d" alt="img.png" referrerpolicy="no-referrer"> <h5 id="_3-craco-config-js-配置以及-svgicon-组件封装"><a href="#_3-craco-config-js-配置以及-svgicon-组件封装" class="header-anchor">#</a> 3.craco.config.js 配置以及 SvgIcon 组件封装</h5> <p>安装好之后，我们还得在<code>webpack</code>的配置文件中定义 loader，这个我们直接在<code>craco.config.js</code>文件下定义就行</p> <p><strong>craco.config.js</strong></p> <div class="language- extra-class"><pre><code>const path = require('path')
+const resolve = (dir) =&gt; path.resolve(__dirname, dir)
+module.exports = {
+  webpack: {
+    alias: {
+      '@': resolve('src')
+    },
+    configure: (webpackConfig, { env, paths }) =&gt; {
+      webpackConfig.module.rules[1].oneOf = [
+        ...[
+          {
+            test: /.svg$/,
+            // 存放svg的文件夹
+            include: resolve('./src/assets/Icon/svg'),
+            use: [
+              { loader: 'svg-sprite-loader', options: {} },
+              { loader: 'svgo-loader', options: {} }
+            ]
+          }
+        ],
+        ...webpackConfig.module.rules[1].oneOf
+      ]
+      return webpackConfig
+    }
+  }
+}
+</code></pre></div><p>现在为了不每次都写 svg 标签，我们可以用封装一个组件来使用 svg 文件</p> <p><code>src/components/SvgIcon/index.jsx</code></p> <div class="language- extra-class"><pre><code>import React from 'react'
+import './SvgIcon.scss'
+​
+const SvgIcon = React.memo(({ width, height, name, color, className }) =&gt; {
+  return (
+    &lt;svg className={className || 'icon-svg'} aria-hidden=&quot;true&quot; width={width} height={height}&gt;
+      &lt;use xlinkHref={'#icon-' + name} fill={color}&gt;&lt;/use&gt;
+    &lt;/svg&gt;
+  )
+})
+​
+export default SvgIcon
+</code></pre></div><p>这样子编写例如<code>&lt;SvgIcon name=&quot;404&quot; /&gt;</code>就能够使用</p> <h5 id="_4-全局导入所有-svg-文件"><a href="#_4-全局导入所有-svg-文件" class="header-anchor">#</a> 4.全局导入所有 svg 文件</h5> <p>但是<code>SvgIcon</code>组件只能一个一个导入 svg 文件访问，能不能一次性导入全部呢？这里我们可以在 assets 的 Icon 文件夹下新建<code>index.js</code>文件来导入所有<code>svg</code>文件。这里我们使用到的是<code>webpack</code>方法是<code>require.context(directory,useSubdirectories = false, regExp = /^.//))</code></p> <blockquote><p><code>directory</code>：要引入的文件目录</p> <p><code>useSubdirectories</code> ：代表是否查询目录下的子目录</p> <p><code>regExp</code>：匹配要引入文件的正则表达式</p> <p>返回值为一个函数，函数接收一个 request 参数。执行后<strong>返回 request 所对应文件暴露的 Module 对象</strong>。而返回值函数也是一个对象，对象有三个属性：</p> <p><code>resolve</code>：是一个函数，它返回 request 被解析后得到的模块 id</p> <p><code>keys</code>：也是一个函数，返回的是匹配成功模块的名字组成的数组</p> <p><code>id</code>：context module 的模块 id</p> <p>经常用到的其实是 keys()函数返回的数组</p></blockquote> <p>我们依据这个来编写一个方法，参数为<code>require.context</code>的返回值。</p> <div class="language- extra-class"><pre><code>// 使用 require.context 获取指定文件夹下的所有 SVG 文件
+const importAll = (r) =&gt; {
+  // r为require.context执行后的返回函数，接收一个request参数，同时也是一个对象，有keys、resolve、id属性
+  const svgs = {}
+  r.keys().map((key) =&gt; {
+    // 用svg对象接收svg文件暴露的Module对象
+    console.log(r(key));
+    return (svgs[key] = r(key))
+  })
+  return Object.keys(svgs)
+}
+const iconList = importAll(require.context('@/assets/Icon/svg', false, /.svg$/))
+​
+// 获取图标名称为icon-(*).svg数组, 例如[icon-shouye, icon-xitong, icon-zhedie, ...]
+export const getNameList = () =&gt; {
+  const regex = /icon-(.*?).svg/
+  return iconList.map((item) =&gt; item.match(regex)[1])
+}
+</code></pre></div><p>得到<code>Module</code>对象就是如下的结构</p> <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2fa4f384b13347f09f8fd3a7b6db9a37~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=757&amp;h=420&amp;s=54939&amp;e=png&amp;b=fefdfd" alt="img.png" referrerpolicy="no-referrer"> <p>然后我们在入口文件中导入这个 index 文件</p> <p><strong>src/index.js</strong></p> <div class="language- extra-class"><pre><code>// 全局导入svg图标
+import '@/assets/Icon'
+</code></pre></div><p>我们就可以在<code>body</code>中看到所有 svg 文件被导入了</p> <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2c219ad7bd474754874f8dde5927c370~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=793&amp;h=585&amp;s=96184&amp;e=png&amp;b=ffffff" alt="img.png" referrerpolicy="no-referrer"> <h4 id="转换菜单数据结构"><a href="#转换菜单数据结构" class="header-anchor">#</a> 转换菜单数据结构</h4> <p>侧边栏用得是 Menu 组件，与下拉菜单类似，<code>items</code>数据用来指定菜单项。我们就先设置一个方法转化一下数据格式。要递归遍历嵌套的路由，有子菜单就递归，无则直接返回单个菜单。</p> <blockquote><p>把全局状态存储的 React Router 结构<code>{ path, element, title, children }</code>转换成<code>Antd Menu</code>提供的方法<code>getItem(label,key,icon,children,type){key,icon,children,label,type}</code>返回值结构，用到了递归，具体可以参考<a href="https://ant-design.antgroup.com/components/menu-cn#itemtype" target="_blank" rel="noopener noreferrer">Ant Design Menu<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>的示例</p></blockquote> <p><strong>src/utils/common.js</strong></p> <div class="language- extra-class"><pre><code>/**
+ * 内置一些工具类函数
+ */
+
+// 导入图标组件
+import SvgIcon from '@/components/Icon/SvgIcon'
+/** 获取菜单项 */
+export function getItem(label, key, icon, children, type) {
+  return { key, icon, children, label, type}
+}
+/**
+ * 获取侧边栏菜单项
+ * @param {*} menuData 嵌套的路由数组
+ * @returns
+ */
+export const getTreeMenu = (menuData) =&gt; {
+  if (!menuData || !menuData.length) return
+  const menuItems = menuData.map((item) =&gt; {
+    if (!item.hidden) {
+      // 如果有子菜单
+      if (item.children &amp;&amp; item.children.length &gt; 0) {
+        return getItem(
+          item.title, '/' + item.path,
+          &lt;SvgIcon name={item.icon ?? 'component'} width=&quot;14&quot; height=&quot;14&quot; color=&quot;#ccc&quot; /&gt;,
+          getTreeMenu(item.children)
+        )
+      }
+      // 无子菜单
+      return getItem(
+        item.title,item.redirect,
+        &lt;SvgIcon name={item.icon ?? 'component'} width=&quot;14&quot; height=&quot;14&quot; color=&quot;#ccc&quot; /&gt;
+      )
+    }
+  })
+  return menuItems
+}
+</code></pre></div><h4 id="在-layout-组件中渲染侧边栏菜单"><a href="#在-layout-组件中渲染侧边栏菜单" class="header-anchor">#</a> 在 layout 组件中渲染侧边栏菜单</h4> <p>我们直接用动态路由的数据作为参数传入上述<code>getTreeMenu</code>方法拼接上首页的菜单，然后在<code>Antd</code>的<code>Menu</code>组件中使用</p> <p><strong>src/Layout/index.jsx</strong></p> <div class="language- extra-class"><pre><code>/** 侧边栏菜单 */
+const permissionRoutes = useSelector((state) =&gt; state.permission.permissionRoutes)
+const menuItems = useMemo(() =&gt; {
+return [
+  getItem(
+    &lt;Link to=&quot;/home&quot;&gt;首页&lt;/Link&gt;,
+    '/home',
+    &lt;SvgIcon name=&quot;component&quot; width=&quot;14&quot; height=&quot;14&quot; color=&quot;#ccc&quot;&gt;&lt;/SvgIcon&gt;
+  )
+].concat(getTreeMenu(permissionRoutes, themeVari))
+}, [permissionRoutes, themeVari])
+const handleMenuClick = (menuitem) =&gt; {
+navigate(menuitem.key)
+}
+...
+return(
+  ...
+  &lt;Sider ...&gt;
+    ...
+    &lt;Menu theme={themeVari} mode=&quot;inline&quot; items={menuItems} onClick={handleMenuClick} /&gt;
+  &lt;/Sider&gt;
+)
+</code></pre></div><p>这样侧边栏菜单就能够正常展示</p> <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f622e01c2ce94c15b6ecb14a48d4e925~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1740&amp;h=1206&amp;s=39279&amp;e=png&amp;b=fefefe" alt="img.png" referrerpolicy="no-referrer"> <p>但是现在存在一个情况<strong>刷新后当前访问路径的菜单高亮消失并且菜单全部收缩</strong>。</p> <h4 id="解决刷新后的问题"><a href="#解决刷新后的问题" class="header-anchor">#</a> 解决刷新后的问题</h4> <h5 id="当前访问路径的菜单高亮消失"><a href="#当前访问路径的菜单高亮消失" class="header-anchor">#</a> 当前访问路径的菜单高亮消失</h5> <p>Antd 的 Menu 组件有一个属性<code>selectedKeys</code>代表当前选中的菜单项的 key 的数组</p> <div class="language- extra-class"><pre><code>// 当前访问路径
+const { pathname} = useLocation()
+...
++   &lt;Menu ... selectedKeys={[pathname]}  /&gt;
+</code></pre></div><h5 id="菜单全部收缩"><a href="#菜单全部收缩" class="header-anchor">#</a> 菜单全部收缩</h5> <p>Antd 的 Menu 组件有一个属性<code>openKeys</code>代表当前展开的<code>SubMenu</code>菜单项的 key 的数组</p> <p>我们获取到当前访问路径，例如说/system/user，system 就是我们需要展开的菜单项的 key，现在我们就去取出这个 key。</p> <div class="language- extra-class"><pre><code>// 获取当前路径数组片段
+const pathSnippets=pathname.split('/').filter(i=&gt;i)
+// 获取除最后一个元素外的数组，并且每个元素前加上/
+const [subMenuKeys, setSubMenuKeys] = useState(pathSnippets.slice(0, -1).map((item) =&gt; '/' + item))
+​
++  &lt;Menu openKeys={subMenuKeys}/&gt;
+</code></pre></div><p>现在刷新后就能菜单就会在当前菜单项的目录上逐级展开了。但又发现了一个新的问题，现在点击下拉菜单没反应了，我们得在<code>Menu</code>组件添加一个<code>onOpenChange</code>配置监测下拉菜单改变重新设置<code>下拉菜单key数组</code></p> <div class="language- extra-class"><pre><code>+  &lt;Menu onOpenChange={(openKeys) =&gt;{setSubMenuKeys(openKeys)}}/&gt;
+</code></pre></div><p>这样侧边栏区域就算完成了</p> <h3 id="内容区域"><a href="#内容区域" class="header-anchor">#</a> 内容区域</h3> <p>内容区域我们直接用<code>&lt;Outlet /&gt;</code>标签展现 layout 子路由页面即可</p> <div class="language- extra-class"><pre class="language-text"><code>...
+&lt;Content
+  style={{
+    margin: '24px 16px',
+    padding: 24,
+    minHeight: 280,
+    background: colorBgContainer
+  }}&gt;
+  &lt;Outlet /&gt;
+&lt;/Content&gt;
+...
+</code></pre></div><h2 id="参考文章"><a href="#参考文章" class="header-anchor">#</a> 参考文章</h2> <p><a href="https://juejin.cn/post/6854573215646875655" target="_blank" rel="noopener noreferrer"># 使用 svg-sprite-loader、svgo-loader 优化项目中的 Icon<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="代码"><a href="#代码" class="header-anchor">#</a> 代码</h2> <p>上述实现的代码都放在<a href="https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FAlan-222%2Freact-antd5-admin" title="https://github.com/Alan-222/react-antd5-admin" target="_blank" rel="noopener noreferrer">react-antd5-admin<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，大家可自行查阅</p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/vuepress-blog/blogs/从零实现一个React+Antd5.0后台管理系统-Layout模块头部区域.html" class="prev">
+          从零实现一个React+Antd5.0后台管理系统-Layout模块头部区域
+        </a></span> <span class="next"><a href="/vuepress-blog/blogs/从零实现一个React+Antd5.0后台管理系统-管理页面通用模块实现.html">
+          从零实现一个React+Antd5.0后台管理系统-管理页面通用模块实现
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%92%8C%E5%86%85%E5%AE%B9%E5%8C%BA%E5%9F%9F.html#前言" class="sidebar-link reco-side-前言" data-v-b57cc07c>前言</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%92%8C%E5%86%85%E5%AE%B9%E5%8C%BA%E5%9F%9F.html#layout-模块" class="sidebar-link reco-side-layout-模块" data-v-b57cc07c>Layout 模块</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%92%8C%E5%86%85%E5%AE%B9%E5%8C%BA%E5%9F%9F.html#侧边栏区域" class="sidebar-link reco-side-侧边栏区域" data-v-b57cc07c>侧边栏区域</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%92%8C%E5%86%85%E5%AE%B9%E5%8C%BA%E5%9F%9F.html#实现-svg-图标组件" class="sidebar-link reco-side-实现-svg-图标组件" data-v-b57cc07c>实现 svg 图标组件</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%92%8C%E5%86%85%E5%AE%B9%E5%8C%BA%E5%9F%9F.html#转换菜单数据结构" class="sidebar-link reco-side-转换菜单数据结构" data-v-b57cc07c>转换菜单数据结构</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%92%8C%E5%86%85%E5%AE%B9%E5%8C%BA%E5%9F%9F.html#在-layout-组件中渲染侧边栏菜单" class="sidebar-link reco-side-在-layout-组件中渲染侧边栏菜单" data-v-b57cc07c>在 layout 组件中渲染侧边栏菜单</a></li><li class="level-4" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%92%8C%E5%86%85%E5%AE%B9%E5%8C%BA%E5%9F%9F.html#解决刷新后的问题" class="sidebar-link reco-side-解决刷新后的问题" data-v-b57cc07c>解决刷新后的问题</a></li><li class="level-3" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%92%8C%E5%86%85%E5%AE%B9%E5%8C%BA%E5%9F%9F.html#内容区域" class="sidebar-link reco-side-内容区域" data-v-b57cc07c>内容区域</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%92%8C%E5%86%85%E5%AE%B9%E5%8C%BA%E5%9F%9F.html#参考文章" class="sidebar-link reco-side-参考文章" data-v-b57cc07c>参考文章</a></li><li class="level-2" data-v-b57cc07c><a href="/vuepress-blog/blogs/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAReact+Antd5.0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-Layout%E6%A8%A1%E5%9D%97%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%92%8C%E5%86%85%E5%AE%B9%E5%8C%BA%E5%9F%9F.html#代码" class="sidebar-link reco-side-代码" data-v-b57cc07c>代码</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/vuepress-blog/assets/js/app.4d1def3f.js" defer></script><script src="/vuepress-blog/assets/js/3.7d50d3e1.js" defer></script><script src="/vuepress-blog/assets/js/1.6ae6daff.js" defer></script><script src="/vuepress-blog/assets/js/75.594b462c.js" defer></script>
+  </body>
+</html>
